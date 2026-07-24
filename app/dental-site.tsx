@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
+import BrandLogo from "./brand-logo";
+import HomeSite from "./home-site";
+import SiteHeader from "./site-header";
 
 type IconName =
   | "arrow"
@@ -15,7 +18,8 @@ type IconName =
   | "shield"
   | "smile"
   | "sparkles"
-  | "tooth";
+  | "tooth"
+  | "whatsapp";
 
 function Icon({ name }: { name: IconName }) {
   const common = {
@@ -77,6 +81,14 @@ function Icon({ name }: { name: IconName }) {
     return (
       <svg {...common}>
         <path d="M6.4 3.5h3l1.5 4-2 1.5a14 14 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A14.5 14.5 0 0 1 4.4 5.5a2 2 0 0 1 2-2Z" />
+      </svg>
+    );
+  }
+  if (name === "whatsapp") {
+    return (
+      <svg {...common}>
+        <path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.3-4.3a8.5 8.5 0 1 1 15.7-4.4Z" />
+        <path d="M8.1 7.6c.2-.4.4-.4.7-.4h.5l.9 2.1c.1.3 0 .5-.2.7l-.7.8a7.3 7.3 0 0 0 3.7 3.2c.3.1.5.1.7-.2l.9-1.1c.2-.3.5-.3.8-.2l2 .9c.3.1.4.3.4.5 0 .4-.2 1.3-.8 1.8-.6.5-1.4.8-2.3.6-1.1-.2-2.6-.8-4.4-2.3-2-1.7-3.3-3.8-3.7-5.1-.3-.7.1-1.2.5-1.3Z" />
       </svg>
     );
   }
@@ -192,37 +204,22 @@ export type PageName =
   | "services"
   | "technology"
   | "team"
+  | "prices"
   | "contact";
 
-const navigation: { href: string; label: string; page: PageName }[] = [
-  { href: "/", label: "Lorem", page: "home" },
-  { href: "/despre", label: "Ipsum", page: "about" },
-  { href: "/servicii", label: "Dolor", page: "services" },
-  { href: "/tehnologie", label: "Amet", page: "technology" },
-  { href: "/echipa", label: "Elit", page: "team" },
-];
+const headerClinic = {
+  city: "Baia Mare",
+  streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
+};
 
 const pageHeadings: Record<Exclude<PageName, "home">, [string, string, string]> = {
   about: ["01", "Lorem ipsum", "dolor sit amet."],
   services: ["02", "Dolor sit", "amet consectetur."],
   technology: ["03", "Consectetur", "adipiscing elit."],
   team: ["04", "Adipiscing", "elit sed do."],
-  contact: ["05", "Eiusmod tempor", "incididunt labore."],
+  prices: ["05", "Prețuri", "clare și transparente."],
+  contact: ["06", "Eiusmod tempor", "incididunt labore."],
 };
-
-function Logo({ compact = false }: { compact?: boolean }) {
-  return (
-    <span className={`brand-logo ${compact ? "brand-logo--compact" : ""}`}>
-      <Image
-        src="/dante-art-logo.png"
-        alt="Dantè Art"
-        width={1024}
-        height={1024}
-        priority
-      />
-    </span>
-  );
-}
 
 function InnerHero({ page }: { page: Exclude<PageName, "home"> }) {
   const [number, firstLine, secondLine] = pageHeadings[page];
@@ -256,8 +253,14 @@ function InnerHero({ page }: { page: Exclude<PageName, "home"> }) {
 }
 
 export default function DentalSite({ page = "home" }: { page?: PageName }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  if (page === "home") {
+    return <HomeSite />;
+  }
+
+  return <LegacyDentalSite page={page} />;
+}
+
+function LegacyDentalSite({ page }: { page: PageName }) {
   const [progress, setProgress] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
@@ -265,7 +268,6 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 24);
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? (window.scrollY / max) * 100 : 0);
     };
@@ -305,69 +307,7 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
   return (
     <>
       <div className="progress-bar" style={{ width: `${progress}%` }} />
-
-      <div className="top-strip">
-        <div className="shell top-strip__inner">
-          <span>Lorem ipsum dolor sit amet</span>
-          <span className="top-strip__dot" />
-          <span>+40 000 000 000</span>
-          <span className="top-strip__spacer" />
-          <span>00:00 — 00:00</span>
-        </div>
-      </div>
-
-      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-        <div className="shell nav">
-          <a href="/" className="nav__brand" aria-label="Dantè Art">
-            <Logo compact />
-          </a>
-
-          <nav className="nav__links" aria-label="Lorem ipsum">
-            {navigation.map((item) => (
-              <a
-                href={item.href}
-                className={page === item.page ? "is-active" : ""}
-                key={item.href}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="nav__actions">
-            <a href="tel:+40000000000" className="nav__phone" aria-label="Lorem ipsum">
-              <Icon name="phone" />
-            </a>
-            <a href="/contact" className="button button--gold nav__cta">
-              Lorem ipsum
-              <Icon name="arrow" />
-            </a>
-            <button
-              className={`menu-button ${menuOpen ? "is-open" : ""}`}
-              onClick={() => setMenuOpen((value) => !value)}
-              aria-expanded={menuOpen}
-              aria-label="Lorem ipsum"
-            >
-              <span />
-              <span />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
-        <div className="mobile-menu__glow" />
-        {[...navigation, { href: "/contact", label: "Tempor", page: "contact" as PageName }].map((item, index) => (
-          <a
-            key={item.href}
-            href={item.href}
-            onClick={() => setMenuOpen(false)}
-          >
-            <span>0{index + 1}</span>
-            {item.label}
-          </a>
-        ))}
-      </div>
+      <SiteHeader clinic={headerClinic} />
 
       <main className={`page page--${page}`}>
         {page !== "home" && <InnerHero page={page} />}
@@ -453,7 +393,7 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
           <div className="hero__footer shell">
             <div>
               <Icon name="map" />
-              <span>Lorem ipsum dolor 00</span>
+              <span>{headerClinic.streetAddress}</span>
             </div>
             <div>
               <Icon name="clock" />
@@ -930,7 +870,7 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
                   </span>
                   <div>
                     <small>Dolor sit amet</small>
-                    <strong>Lorem ipsum 00</strong>
+                    <strong>{headerClinic.streetAddress}</strong>
                   </div>
                 </div>
               </div>
@@ -1005,7 +945,7 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
         <div className="shell">
           <div className="footer__top">
             <a href="/">
-              <Logo />
+              <BrandLogo />
             </a>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -1033,7 +973,7 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
               <small>Amet elit</small>
               <a href="tel:+40000000000">+40 000 000 000</a>
               <span>00:00 — 00:00</span>
-              <span>Lorem ipsum 00</span>
+              <span>{headerClinic.streetAddress}</span>
             </div>
             <div className="footer__newsletter">
               <small>Consectetur</small>
@@ -1053,9 +993,14 @@ export default function DentalSite({ page = "home" }: { page?: PageName }) {
         </div>
       </footer>
 
-      <a href="/contact" className="floating-cta" aria-label="Lorem ipsum">
-        <Icon name="calendar" />
-        <span>Lorem ipsum</span>
+      <a
+        href="https://wa.me/40000000000"
+        className="floating-cta"
+        aria-label="Contactează-ne pe WhatsApp"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <Icon name="whatsapp" />
       </a>
     </>
   );
