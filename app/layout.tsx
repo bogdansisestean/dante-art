@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./home-site.css";
+import "./prices-site.css";
+import "./about-site.css";
 
 export const metadata: Metadata = {
   title: "Dantè Art | Clinică stomatologică în Baia Mare",

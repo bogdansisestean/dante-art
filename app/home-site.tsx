@@ -39,6 +39,9 @@ type ClinicDetails = {
 const clinic: ClinicDetails = {
   city: "Baia Mare",
   streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
+  phoneDisplay: "0770 733 891",
+  phoneHref: "tel:+40770733891",
+  whatsappHref: "https://wa.me/40770733891",
 };
 
 const navigation = [

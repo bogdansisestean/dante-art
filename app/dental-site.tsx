@@ -210,6 +210,8 @@ export type PageName =
 const headerClinic = {
   city: "Baia Mare",
   streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
+  phoneDisplay: "0770 733 891",
+  phoneHref: "tel:+40770733891",
 };
 
 const pageHeadings: Record<Exclude<PageName, "home">, [string, string, string]> = {
@@ -855,13 +857,13 @@ function LegacyDentalSite({ page }: { page: PageName }) {
                 tempor incididunt ut labore.
               </p>
               <div className="contact__details">
-                <a href="tel:+40000000000">
+                <a href="tel:+40770733891">
                   <span>
                     <Icon name="phone" />
                   </span>
                   <div>
                     <small>Lorem ipsum</small>
-                    <strong>+40 000 000 000</strong>
+                    <strong>0770 733 891</strong>
                   </div>
                 </a>
                 <div>
@@ -971,7 +973,7 @@ function LegacyDentalSite({ page }: { page: PageName }) {
             </div>
             <div>
               <small>Amet elit</small>
-              <a href="tel:+40000000000">+40 000 000 000</a>
+              <a href="tel:+40770733891">0770 733 891</a>
               <span>00:00 — 00:00</span>
               <span>{headerClinic.streetAddress}</span>
             </div>
@@ -994,7 +996,7 @@ function LegacyDentalSite({ page }: { page: PageName }) {
       </footer>
 
       <a
-        href="https://wa.me/40000000000"
+        href="https://wa.me/40770733891"
         className="floating-cta"
         aria-label="Contactează-ne pe WhatsApp"
         target="_blank"
