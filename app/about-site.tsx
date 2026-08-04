@@ -2,15 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import BrandLogo from "./brand-logo";
+import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
-
-const clinic = {
-  city: "Baia Mare",
-  streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
-  phoneDisplay: "0770 733 891",
-  phoneHref: "tel:+40770733891",
-};
+import { clinic } from "./site-config";
 
 type IconName = "arrow" | "clock" | "heart" | "shield" | "sparkles" | "tooth";
 
@@ -118,7 +112,7 @@ export default function AboutSite() {
           <div className="dante-shell about-founder__grid">
             <div className="about-founder__media" data-about-reveal>
               <Image
-                src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1000&q=90"
+                src="/team/ileana-zaharie.jpg"
                 alt="Dr. Ileana Zaharie, medic stomatolog specializat în pedodonție, Baia Mare"
                 fill
                 sizes="(max-width: 900px) 100vw, 44vw"
@@ -197,34 +191,7 @@ export default function AboutSite() {
         </section>
       </main>
 
-      <footer className="dante-footer">
-        <div className="dante-shell">
-          <div className="dante-footer__grid">
-            <div className="dante-footer__brand">
-              <a href="/" aria-label="Dantè Art — Acasă"><BrandLogo /></a>
-              <p>Îngrijire stomatologică atentă, transparentă și adaptată fiecărui pacient.</p>
-            </div>
-            <div className="dante-footer__column">
-              <small>Navigare</small>
-              <a href="/">Acasă</a><a href="/despre">Despre noi</a><a href="/echipa">Echipa</a>
-            </div>
-            <div className="dante-footer__column">
-              <small>Descoperă</small>
-              <a href="/servicii">Servicii</a><a href="/tehnologie">Tehnologie</a><a href="/preturi">Prețuri</a>
-            </div>
-            <div className="dante-footer__column dante-footer__contact">
-              <small>Contact</small>
-              <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a>
-              <span>{clinic.streetAddress}</span>
-              <a href="/contact" className="dante-button dante-button--gold">Programează-te <Icon name="arrow" /></a>
-            </div>
-          </div>
-          <div className="dante-footer__bottom">
-            <span>© 2026 Dantè Art. Toate drepturile rezervate.</span>
-            <nav aria-label="Linkuri legale"><a href="/politica-de-confidentialitate">Confidențialitate</a><a href="/termeni-si-conditii">Termeni și condiții</a></nav>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -3,6 +3,8 @@ import "./globals.css";
 import "./home-site.css";
 import "./prices-site.css";
 import "./about-site.css";
+import "./legal.css";
+import CookieBanner from "./cookie-banner";
 
 export const metadata: Metadata = {
   title: "Dantè Art | Clinică stomatologică în Baia Mare",
@@ -17,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body>{children}</body>
+      <body>
+        {children}
+        <CookieBanner />
+      </body>
     </html>
   );
 }

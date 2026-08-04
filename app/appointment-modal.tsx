@@ -101,10 +101,16 @@ export default function AppointmentModal({
                 />
               </label>
             </div>
-            <p className="dante-modal__privacy">
-              Prin folosirea acestui formular sunteți de acord cu stocarea și folosirea datelor
-              introduse.
-            </p>
+            <label className="dante-modal__consent">
+              <input name="privacy" type="checkbox" required />
+              <span>
+                Sunt de acord cu prelucrarea datelor conform{" "}
+                <a href="/politica-de-confidentialitate" target="_blank" rel="noreferrer">
+                  Politicii de confidențialitate
+                </a>
+                .
+              </span>
+            </label>
             <button type="submit" className="dante-modal__submit">
               Trimite cererea
             </button>

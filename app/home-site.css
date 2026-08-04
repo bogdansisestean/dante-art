@@ -630,6 +630,16 @@
   filter: saturate(0.72) contrast(1.04);
 }
 
+.dante-hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% center;
+  filter: saturate(0.72) contrast(1.04);
+}
+
 .dante-hero__image-wash {
   position: absolute;
   inset: 0;
@@ -2541,12 +2551,30 @@ a.dante-contact-method:hover > svg {
   border-radius: 0 999px 999px 0;
 }
 
-.dante-modal__privacy {
+.dante-modal__consent {
   margin-top: 17px;
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  align-items: start;
+  gap: 9px;
   color: rgba(255, 255, 255, 0.62);
   font-size: 12px;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dante-modal__consent input {
+  width: 15px;
+  height: 15px;
+  margin: 2px 0 0;
+  accent-color: var(--gold-500);
+}
+
+.dante-modal__consent a {
+  color: var(--gold-300);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .dante-modal__submit,
@@ -3089,5 +3117,262 @@ a.dante-contact-method:hover > svg {
   [data-dante-reveal] {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ============================================================
+   Footer — social links, contact rows, legal & ANPC row
+   ============================================================ */
+.dante-footer__social {
+  margin-top: 23px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dante-footer__social a {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+}
+
+.dante-footer__social a svg {
+  width: 17px;
+  height: 17px;
+}
+
+.dante-footer__social a:hover {
+  color: var(--navy-950);
+  background: var(--gold-300);
+  border-color: var(--gold-300);
+  transform: translateY(-2px);
+}
+
+.dante-footer__contact a,
+.dante-footer__hours {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 9px;
+  line-height: 1.55;
+  transition: color 0.25s ease;
+}
+
+.dante-footer__contact a:hover {
+  color: white;
+}
+
+.dante-footer__contact a svg,
+.dante-footer__hours svg {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  margin-top: 1px;
+  color: var(--gold-300);
+}
+
+.dante-footer__legal-row {
+  padding: 22px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dante-footer__company {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.dante-footer__anpc {
+  display: inline-flex;
+  border-radius: 8px;
+  background: white;
+  padding: 6px 10px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dante-footer__anpc:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.dante-footer__anpc img {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+.dante-footer__bottom nav button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.dante-footer__bottom nav button:hover {
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .dante-footer__legal-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   Cookie consent banner
+   ============================================================ */
+.dante-cookie {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(12px, 3vw, 26px);
+  transform: translateX(-50%);
+  z-index: 1200;
+  width: min(760px, calc(100vw - 24px));
+  animation: dante-cookie-in 0.4s ease both;
+}
+
+@keyframes dante-cookie-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.dante-cookie__inner {
+  padding: clamp(18px, 3vw, 26px);
+  background: var(--paper);
+  border: 1px solid rgba(9, 18, 47, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(5, 11, 33, 0.28);
+}
+
+.dante-cookie__intro strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--serif);
+  font-size: 21px;
+  color: var(--navy-900);
+}
+
+.dante-cookie__intro p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: rgba(9, 18, 47, 0.72);
+}
+
+.dante-cookie__intro a {
+  color: var(--gold-600);
+  text-decoration: underline;
+}
+
+.dante-cookie__options {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.dante-cookie__option {
+  display: flex;
+  gap: 11px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid rgba(9, 18, 47, 0.1);
+  border-radius: 12px;
+  background: rgba(9, 18, 47, 0.02);
+  cursor: pointer;
+}
+
+.dante-cookie__option.is-locked {
+  opacity: 0.85;
+  cursor: default;
+}
+
+.dante-cookie__option input {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--gold-500);
+}
+
+.dante-cookie__option strong {
+  display: block;
+  font-size: 13px;
+  color: var(--navy-900);
+}
+
+.dante-cookie__option small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: rgba(9, 18, 47, 0.6);
+}
+
+.dante-cookie__actions {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.dante-cookie__btn {
+  padding: 11px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(9, 18, 47, 0.22);
+  background: transparent;
+  color: var(--navy-900);
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.dante-cookie__btn:hover {
+  border-color: var(--navy-900);
+  transform: translateY(-1px);
+}
+
+.dante-cookie__btn.is-primary {
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+  color: var(--navy-950);
+}
+
+.dante-cookie__btn.is-primary:hover {
+  filter: brightness(1.04);
+}
+
+@media (max-width: 520px) {
+  .dante-cookie__actions {
+    justify-content: stretch;
+  }
+  .dante-cookie__btn {
+    flex: 1 1 auto;
   }
 }

@@ -1,7 +1,8 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import BrandLogo from "./brand-logo";
+import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
+import { clinic } from "./site-config";
 
 type PriceRow = [service: string, price: string];
 type PriceGroup = { title?: string; rows: PriceRow[]; note?: ReactNode; intro?: ReactNode };
@@ -12,13 +13,6 @@ type PriceCategory = {
   intro: ReactNode;
   groups: PriceGroup[];
   links?: { label: string; href: string }[];
-};
-
-const clinic = {
-  city: "Baia Mare",
-  streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
-  phoneDisplay: "0770 733 891",
-  phoneHref: "tel:+40770733891",
 };
 
 const consultationRows: PriceRow[] = [
@@ -504,16 +498,7 @@ export default function PricesSite() {
         </aside>
       </main>
 
-      <footer className="dante-footer prices-footer">
-        <div className="dante-shell">
-          <div className="prices-footer__grid">
-            <div><a href="/" aria-label="Dantè Art — Acasă"><BrandLogo /></a><p>Stomatologie modernă, planuri transparente și tratamente adaptate fiecărui pacient.</p></div>
-            <nav aria-label="Navigare subsol"><a href="/despre">Despre noi</a><a href="/servicii">Servicii</a><a href="/echipa">Echipa</a><a href="/tehnologie">Tehnologie</a><a href="/contact">Contact</a></nav>
-            <div><small>Contact</small><a href={clinic.phoneHref}>{clinic.phoneDisplay}</a><span>{clinic.streetAddress}</span></div>
-          </div>
-          <div className="dante-footer__bottom"><span>© 2026 Dantè Art. Toate drepturile rezervate.</span><nav aria-label="Linkuri legale"><a href="/politica-de-confidentialitate">Confidențialitate</a><a href="/termeni-si-conditii">Termeni și condiții</a></nav></div>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <a href="https://wa.me/40770733891" className="dante-floating-whatsapp" aria-label="Contactează-ne pe WhatsApp" target="_blank" rel="noreferrer"><Icon name="whatsapp" /></a>
     </div>

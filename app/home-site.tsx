@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
 import AppointmentModal from "./appointment-modal";
-import BrandLogo from "./brand-logo";
+import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
+import { clinic } from "./site-config";
 
 type IconName =
   | "arrow"
@@ -21,39 +22,6 @@ type IconName =
   | "sparkles"
   | "tooth"
   | "whatsapp";
-
-type ClinicDetails = {
-  city: string;
-  streetAddress?: string;
-  phoneDisplay?: string;
-  phoneHref?: string;
-  whatsappHref?: string;
-  email?: string;
-  weekdayHours?: string;
-  saturdayHours?: string;
-  mapsUrl?: string;
-  mapsEmbedUrl?: string;
-};
-
-// Complete only with information confirmed by the clinic owner.
-const clinic: ClinicDetails = {
-  city: "Baia Mare",
-  streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
-  phoneDisplay: "0770 733 891",
-  phoneHref: "tel:+40770733891",
-  whatsappHref: "https://wa.me/40770733891",
-};
-
-const navigation = [
-  { href: "/", label: "Acasă" },
-  { href: "/despre", label: "Despre noi" },
-  { href: "/servicii", label: "Servicii", hasMenu: true },
-  { href: "/echipa", label: "Echipa" },
-  { href: "/tehnologie", label: "Tehnologie" },
-  { href: "/preturi", label: "Prețuri" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-];
 
 const trustItems: { icon: IconName; title: string; text: string }[] = [
   {
@@ -511,12 +479,16 @@ export default function HomeSite() {
               <div className="dante-hero__orbit dante-hero__orbit--one" />
               <div className="dante-hero__orbit dante-hero__orbit--two" />
               <div className="dante-hero__image">
-                <Image
-                  src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=90"
-                  alt="Medic alături de un pacient într-o clinică stomatologică — imagine ilustrativă"
-                  fill
-                  sizes="(max-width: 920px) 92vw, 46vw"
-                  priority
+                <video
+                  className="dante-hero__video"
+                  src="/videos/hero-clinic.mp4"
+                  poster="/videos/hero-clinic-poster.jpg"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  aria-label="Prezentare video a clinicii stomatologice Dantè Art din Baia Mare"
                 />
                 <div className="dante-hero__image-wash" />
               </div>
@@ -1047,75 +1019,7 @@ export default function HomeSite() {
         </section>
       </main>
 
-      <footer className="dante-footer">
-        <div className="dante-shell">
-          <div className="dante-footer__grid">
-            <div className="dante-footer__brand">
-              <a href="/" aria-label="Dantè Art — Acasă">
-                <BrandLogo />
-              </a>
-              <p>
-                Oferim tratamente stomatologice moderne, adaptate nevoilor fiecărui pacient.
-                Punem accent pe comunicare, transparență și rezultate care inspiră încredere.
-              </p>
-              <div className="dante-social-placeholder" aria-label="Rețele sociale">
-                <span>Facebook</span>
-                <span>Instagram</span>
-                <span>TikTok</span>
-                <span>LinkedIn</span>
-              </div>
-            </div>
-            <div className="dante-footer__column">
-              <small>Navigare</small>
-              {navigation.slice(0, 2).map((item) => (
-                <a href={item.href} key={item.href}>
-                  {item.label}
-                </a>
-              ))}
-              {navigation.slice(3).map((item) => (
-                <a href={item.href} key={item.href}>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-            <div className="dante-footer__column">
-              <small>Servicii</small>
-              {services.map((service) => (
-                <a href={service.href} key={service.href}>
-                  {service.title}
-                </a>
-              ))}
-            </div>
-            <div className="dante-footer__column dante-footer__contact">
-              <small>Contact</small>
-              <span>{clinic.phoneDisplay ?? "Telefon în curs de confirmare"}</span>
-              <span>{clinic.email ?? "E-mail în curs de confirmare"}</span>
-              <span>
-                {clinic.streetAddress ?? `${clinic.city} · adresă în curs de confirmare`}
-              </span>
-              <span>
-                Luni–Vineri: {clinic.weekdayHours ?? "program în curs de confirmare"}
-              </span>
-              <button
-                type="button"
-                className="dante-button dante-button--gold"
-                onClick={openAppointment}
-              >
-                Programează-te
-                <Icon name="arrow" />
-              </button>
-            </div>
-          </div>
-          <div className="dante-footer__bottom">
-            <span>© 2026 Dantè Art. Toate drepturile rezervate.</span>
-            <nav aria-label="Linkuri legale">
-              <a href="/politica-de-confidentialitate">Confidențialitate</a>
-              <a href="/termeni-si-conditii">Termeni și condiții</a>
-              <a href="/politica-cookies">Cookies</a>
-            </nav>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter onAppointment={openAppointment} />
 
       {publishedWhatsApp && (
         <a
