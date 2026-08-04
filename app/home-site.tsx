@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import AppointmentModal from "./appointment-modal";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
@@ -385,6 +385,31 @@ export default function HomeSite() {
   const [openFaq, setOpenFaq] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [progress, setProgress] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoPlaying, setVideoPlaying] = useState(true);
+  const [videoMuted, setVideoMuted] = useState(true);
+
+  const toggleVideoPlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      void video.play();
+    } else {
+      video.pause();
+    }
+  };
+
+  const toggleVideoSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    const nextMuted = !video.muted;
+    video.muted = nextMuted;
+    setVideoMuted(nextMuted);
+    // Unmuting a paused clip should also start it, so the user hears something.
+    if (!nextMuted && video.paused) {
+      void video.play();
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -480,6 +505,7 @@ export default function HomeSite() {
               <div className="dante-hero__orbit dante-hero__orbit--two" />
               <div className="dante-hero__image">
                 <video
+                  ref={videoRef}
                   className="dante-hero__video"
                   src="/videos/hero-clinic.mp4"
                   poster="/videos/hero-clinic-poster.jpg"
@@ -489,8 +515,64 @@ export default function HomeSite() {
                   playsInline
                   preload="metadata"
                   aria-label="Prezentare video a clinicii stomatologice Dantè Art din Baia Mare"
+                  onPlay={() => setVideoPlaying(true)}
+                  onPause={() => setVideoPlaying(false)}
+                  onVolumeChange={(event) => setVideoMuted(event.currentTarget.muted)}
                 />
                 <div className="dante-hero__image-wash" />
+                <div className="dante-hero__video-controls">
+                  <button
+                    type="button"
+                    onClick={toggleVideoPlay}
+                    aria-label={videoPlaying ? "Pune videoclipul pe pauză" : "Redă videoclipul"}
+                    aria-pressed={videoPlaying}
+                  >
+                    {videoPlaying ? (
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <rect x="6.5" y="5" width="3.6" height="14" rx="1.1" />
+                        <rect x="13.9" y="5" width="3.6" height="14" rx="1.1" />
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M8 5.2c0-.9 1-1.5 1.8-1L18 11.1a1.2 1.2 0 0 1 0 2L9.8 19.8c-.8.5-1.8-.1-1.8-1V5.2Z" />
+                      </svg>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={toggleVideoSound}
+                    aria-label={videoMuted ? "Activează sunetul" : "Dezactivează sunetul"}
+                    aria-pressed={!videoMuted}
+                  >
+                    {videoMuted ? (
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.8}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M4 9v6h3.5L13 20V4L7.5 9H4Z" />
+                        <path d="m17 9 4 6M21 9l-4 6" />
+                      </svg>
+                    ) : (
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={1.8}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M4 9v6h3.5L13 20V4L7.5 9H4Z" />
+                        <path d="M16.5 8.5a5 5 0 0 1 0 7M18.8 6a8 8 0 0 1 0 12" />
+                      </svg>
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="dante-floating-card dante-floating-card--top">
                 <span>
@@ -1041,19 +1123,6 @@ export default function HomeSite() {
       >
         ↑
       </button>
-
-      {publishedPhone && publishedWhatsApp && (
-        <div className="dante-mobile-actions">
-          <a href={clinic.phoneHref}>
-            <Icon name="phone" />
-            Sună acum
-          </a>
-          <a href={clinic.whatsappHref} target="_blank" rel="noreferrer">
-            <Icon name="whatsapp" />
-            WhatsApp
-          </a>
-        </div>
-      )}
 
       <AppointmentModal
         open={appointmentOpen}

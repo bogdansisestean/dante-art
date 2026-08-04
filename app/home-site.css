@@ -640,6 +640,56 @@
   filter: saturate(0.72) contrast(1.04);
 }
 
+.dante-hero__video-controls {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dante-hero__video-controls button {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid rgba(240, 207, 130, 0.4);
+  border-radius: 999px;
+  background: rgba(5, 11, 33, 0.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: var(--gold-300);
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.dante-hero__video-controls button:hover {
+  background: var(--gold-300);
+  border-color: var(--gold-300);
+  color: var(--navy-950);
+  transform: translateY(-2px);
+}
+
+.dante-hero__video-controls svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 620px) {
+  .dante-hero__video-controls {
+    right: 10px;
+  }
+  .dante-hero__video-controls button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 .dante-hero__image-wash {
   position: absolute;
   inset: 0;
@@ -2367,39 +2417,6 @@ a.dante-contact-method:hover > svg {
   transform: translateY(-4px);
 }
 
-.dante-mobile-actions {
-  position: fixed;
-  z-index: 700;
-  inset: auto 0 0;
-  height: 62px;
-  display: none;
-  grid-template-columns: 1fr 1fr;
-  color: white;
-  background: var(--navy-950);
-  box-shadow: 0 -14px 40px rgba(5, 11, 33, 0.18);
-}
-
-.dante-mobile-actions a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.dante-mobile-actions a + a {
-  color: white;
-  background: #269f5b;
-}
-
-.dante-mobile-actions svg {
-  width: 19px;
-}
-
 /* Appointment modal */
 .sr-only {
   position: absolute;
@@ -3089,18 +3106,14 @@ a.dante-contact-method:hover > svg {
     grid-template-columns: 1fr;
   }
 
-  .dante-back-to-top {
-    right: 15px;
-    bottom: 74px;
-  }
-
   .dante-floating-whatsapp {
     right: 15px;
-    bottom: 74px;
+    bottom: 18px;
   }
 
-  .dante-mobile-actions {
-    display: grid;
+  .dante-back-to-top {
+    right: 15px;
+    bottom: 80px;
   }
 }
 
