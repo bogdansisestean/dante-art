@@ -38,7 +38,6 @@ const categories: PriceCategory[] = [
         ["Fluorizare", "100"],
       ],
     }],
-    links: [{ label: "Igienizare dentară în Baia Mare", href: "/servicii/igienizare-dentara-baia-mare" }],
   },
   {
     id: "albire",
@@ -60,7 +59,6 @@ const categories: PriceCategory[] = [
         ["Albire dentară la domiciliu, cu gutiere personalizate", "850"],
       ],
     }],
-    links: [{ label: "Albire dentară în Baia Mare", href: "/servicii/albire-dentara-baia-mare" }],
   },
   {
     id: "odontoterapie",
@@ -104,7 +102,6 @@ const categories: PriceCategory[] = [
         ["Obturație coronară după tratamentul de canal", "250"],
       ],
     }],
-    links: [{ label: "Tratament de canal în Baia Mare", href: "/servicii/tratament-de-canal-baia-mare" }],
   },
   {
     id: "parodontologie",
@@ -158,7 +155,7 @@ const categories: PriceCategory[] = [
       <>
         Extracția rămâne ultima soluție, atunci când dintele nu mai poate fi salvat. O realizăm
         sub anestezie, iar după vindecare,{" "}
-        <a href="/servicii/implant-dentar-baia-mare">se poate înlocui dintele extras</a> printr-un
+        <a href="#implantologie">se poate înlocui dintele extras</a> printr-un
         implant sau o lucrare protetică. Prețul depinde de dintele care trebuie scos: un dinte
         cu o singură rădăcină se extrage mai simplu decât un molar sau decât un molar de minte inclus.
       </>
@@ -210,7 +207,6 @@ const categories: PriceCategory[] = [
         ],
       },
     ],
-    links: [{ label: "Implant dentar în Baia Mare", href: "/servicii/implant-dentar-baia-mare" }],
   },
   {
     id: "protetica",
@@ -240,10 +236,6 @@ const categories: PriceCategory[] = [
         ],
       },
     ],
-    links: [
-      { label: "Coroane și proteze dentare", href: "/servicii/coroane-si-proteze-dentare-baia-mare" },
-      { label: "Fațete dentare", href: "/servicii/fatete-dentare-baia-mare" },
-    ],
   },
   {
     id: "ortodontie",
@@ -267,7 +259,6 @@ const categories: PriceCategory[] = [
         ["Mască facială", "900"],
       ],
     }],
-    links: [{ label: "Ortodonție în Baia Mare", href: "/servicii/ortodontie-baia-mare" }],
   },
 ];
 
@@ -499,8 +490,6 @@ export default function PricesSite() {
       </main>
 
       <SiteFooter />
-
-      <a href="https://wa.me/40770733891" className="dante-floating-whatsapp" aria-label="Contactează-ne pe WhatsApp" target="_blank" rel="noreferrer"><Icon name="whatsapp" /></a>
     </div>
   );
 }

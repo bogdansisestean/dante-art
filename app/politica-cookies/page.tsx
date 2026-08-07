@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalLayout from "../legal-layout";
+import { clinic } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Politica de cookie-uri | Dantè Art Baia Mare",
@@ -245,7 +246,7 @@ export default function CookiePolicyPage() {
         <strong>DOCTORTIM S.R.L. — Clinica Dantè Art</strong>
         Str. Uranus nr. 1, parter, ap. 2, Baia Mare
         <br />
-        Telefon: 0770 733 891 · E-mail:{" "}
+        Telefon: <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a> · E-mail:{" "}
         <a href="mailto:contact.danteart@gmail.com">contact.danteart@gmail.com</a>
       </div>
       <p>

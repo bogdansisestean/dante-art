@@ -40,6 +40,13 @@ export const company = {
   address: "Aleea Uranus, Nr. 1, Baia Mare, Maramureș",
 };
 
+// Builds a mailto: link so contact/appointment forms can hand the message off
+// to whatever mail app is set as default on the visitor's device — no backend/SMTP involved.
+export function buildMailtoLink(to: string, subject: string, lines: (string | false | undefined)[]) {
+  const body = lines.filter((line): line is string => Boolean(line)).join("\n");
+  return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 export type SocialName = "facebook" | "instagram" | "tiktok";
 
 export const socialLinks: { name: SocialName; label: string; href: string }[] = [
@@ -76,11 +83,13 @@ export const footerNavigation = [
   { href: "/contact", label: "Contact" },
 ];
 
+// Individual /servicii/[nume-tratament] pages aren't built yet — link into the
+// matching /preturi section instead of a 404 until each page goes live.
 export const footerServices = [
-  { href: "/servicii/implant-dentar-baia-mare", label: "Implant dentar" },
-  { href: "/servicii/fatete-dentare-baia-mare", label: "Fațete dentare" },
-  { href: "/servicii/albire-dentara-baia-mare", label: "Albire dentară" },
-  { href: "/servicii/ortodontie-baia-mare", label: "Ortodonție" },
-  { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Coroane și proteze" },
-  { href: "/servicii/igienizare-dentara-baia-mare", label: "Igienizare și prevenție" },
+  { href: "/preturi#implantologie", label: "Implant dentar" },
+  { href: "/preturi#protetica", label: "Fațete dentare" },
+  { href: "/preturi#albire", label: "Albire dentară" },
+  { href: "/preturi#ortodontie", label: "Ortodonție" },
+  { href: "/preturi#protetica", label: "Coroane și proteze" },
+  { href: "/preturi#igienizare", label: "Igienizare și prevenție" },
 ];

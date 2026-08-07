@@ -28,7 +28,7 @@
   gap: 11px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
   line-height: 1.2;
@@ -138,7 +138,7 @@
 
 .dante-logo__wordmark small {
   margin-top: 7px;
-  font-size: 6px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -151,7 +151,7 @@
   gap: 10px;
   margin-bottom: 23px;
   color: var(--gold-600);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -196,7 +196,7 @@
   display: flex;
   align-items: center;
   gap: 22px;
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -276,7 +276,7 @@
   align-items: center;
   gap: 4px;
   color: rgba(255, 255, 255, 0.75);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
   white-space: nowrap;
@@ -464,7 +464,7 @@
   color: var(--navy-950);
   background: linear-gradient(120deg, var(--gold-600), var(--gold-300), var(--gold-500));
   box-shadow: 0 18px 50px rgba(189, 131, 37, 0.28);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-align: left;
@@ -482,14 +482,14 @@
   gap: 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   font-family: var(--serif);
-  font-size: clamp(27px, 6vw, 44px);
+  font-size: clamp(29px, 6vw, 47px);
   line-height: 1;
 }
 
 .dante-mobile-menu__inner > a span {
   color: var(--gold-400);
   font-family: var(--sans);
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: 0.1em;
 }
 
@@ -551,7 +551,7 @@
 
 .dante-hero__content h1 {
   max-width: 720px;
-  font-size: clamp(48px, 5vw, 78px);
+  font-size: clamp(51px, 5vw, 83px);
   letter-spacing: -0.045em;
   text-wrap: balance;
 }
@@ -571,7 +571,7 @@
   max-width: 650px;
   margin-top: 29px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.82;
 }
 
@@ -596,7 +596,7 @@
   align-items: center;
   gap: 7px;
   color: rgba(255, 255, 255, 0.46);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -782,14 +782,14 @@
 }
 
 .dante-floating-card strong {
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.04em;
 }
 
 .dante-floating-card small {
   margin-top: 3px;
   color: var(--gold-300);
-  font-size: 8px;
+  font-size: 9px;
 }
 
 @keyframes dante-float {
@@ -811,7 +811,7 @@
   align-items: center;
   gap: 10px;
   color: rgba(255, 255, 255, 0.42);
-  font-size: 7px;
+  font-size: 8px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -900,14 +900,14 @@
 
 .dante-trust h2 {
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: 21px;
   line-height: 1.1;
 }
 
 .dante-trust p {
   margin-top: 9px;
   color: rgba(255, 255, 255, 0.43);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.65;
 }
 
@@ -922,7 +922,7 @@
 .dante-team h2,
 .dante-contact h2 {
   max-width: 760px;
-  font-size: clamp(48px, 5.5vw, 78px);
+  font-size: clamp(51px, 5.5vw, 83px);
   letter-spacing: -0.04em;
   line-height: 0.98;
 }
@@ -945,7 +945,7 @@
   max-width: 460px;
   padding-bottom: 7px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -981,7 +981,7 @@
   padding-bottom: 5px;
   border-bottom: 1px solid var(--gold-500);
   color: var(--navy-900);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1081,7 +1081,7 @@
   box-shadow:
     0 24px 60px rgba(5, 11, 33, 0.25),
     0 0 0 8px rgba(189, 131, 37, 0.08);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1100,7 +1100,7 @@
   max-width: 600px;
   margin-top: 23px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -1175,7 +1175,7 @@
   top: 25px;
   right: 27px;
   color: rgba(9, 18, 47, 0.28);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -1216,14 +1216,14 @@
 
 .dante-service-card h3 {
   margin-top: 29px;
-  font-size: 26px;
+  font-size: 27px;
   line-height: 1.04;
 }
 
 .dante-service-card p {
   margin-top: 15px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.65;
 }
 
@@ -1409,13 +1409,13 @@
 }
 
 .dante-smile-design__badge strong {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .dante-smile-design__badge small {
   margin-top: 3px;
   color: var(--gold-300);
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .dante-smile-design__content h2 em {
@@ -1431,7 +1431,7 @@
   max-width: 620px;
   margin-top: 22px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -1448,7 +1448,7 @@
   gap: 11px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.09);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .dante-smile-design__content li svg {
@@ -1544,20 +1544,20 @@
   top: 337px;
   right: 27px;
   color: var(--gold-600);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
 
 .dante-technology__grid h3 {
   margin-top: 26px;
-  font-size: 27px;
+  font-size: 29px;
 }
 
 .dante-technology__grid p {
   margin-top: 12px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
 }
 
@@ -1636,6 +1636,12 @@
     linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
 }
 
+.dante-team-card__portrait > img {
+  object-fit: cover;
+  object-position: center top;
+  filter: saturate(0.85);
+}
+
 .dante-team-card__portrait::before,
 .dante-team-card__portrait::after {
   content: "";
@@ -1689,17 +1695,17 @@
 
 .dante-team-card__body > span {
   color: var(--gold-400);
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .dante-team-card__body h3 {
-  font-size: 25px;
+  font-size: 27px;
 }
 
 .dante-team-card__body p {
   margin-top: 7px;
   color: rgba(255, 255, 255, 0.4);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 /* First visit */
@@ -1759,20 +1765,20 @@
   color: var(--navy-950);
   background: linear-gradient(140deg, var(--gold-300), var(--gold-500));
   box-shadow: 0 13px 30px rgba(189, 131, 37, 0.22);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .dante-first-visit__steps h3 {
   margin-top: 31px;
-  font-size: 25px;
+  font-size: 27px;
   line-height: 1.08;
 }
 
 .dante-first-visit__steps p {
   margin-top: 15px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.75;
 }
 
@@ -1801,7 +1807,7 @@
   max-width: 430px;
   margin: 25px 0 33px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -1826,12 +1832,12 @@
 
 .dante-faq__list article > button > span {
   color: var(--gold-600);
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .dante-faq__list article > button strong {
   font-family: var(--serif);
-  font-size: clamp(20px, 2vw, 26px);
+  font-size: clamp(22px, 2vw, 28px);
   font-weight: 600;
   line-height: 1.15;
 }
@@ -1866,7 +1872,7 @@
   max-width: 680px;
   overflow: hidden;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.75;
   transition: padding 0.4s var(--ease);
 }
@@ -1908,7 +1914,7 @@
   max-width: 660px;
   margin-top: 24px;
   color: rgba(255, 255, 255, 0.48);
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .dante-contact__grid {
@@ -1957,13 +1963,13 @@
 }
 
 .dante-contact__form-heading h3 {
-  font-size: 27px;
+  font-size: 29px;
 }
 
 .dante-contact__form-heading p {
   margin-top: 4px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .dante-request-form {
@@ -1980,7 +1986,7 @@
   display: block;
   margin: 0 0 7px 4px;
   color: var(--muted);
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1995,7 +2001,7 @@
   outline: none;
   color: var(--navy-900);
   background: rgba(9, 18, 47, 0.025);
-  font-size: 12px;
+  font-size: 14px;
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease,
@@ -2033,7 +2039,7 @@
   align-items: start;
   gap: 9px;
   color: #7e8392;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.6;
 }
 
@@ -2084,14 +2090,14 @@
 
 .dante-form-success h3 {
   margin-top: 24px;
-  font-size: 35px;
+  font-size: 37px;
 }
 
 .dante-form-success p {
   max-width: 480px;
   margin: 12px 0 26px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .dante-contact__details {
@@ -2110,7 +2116,7 @@
 
 .dante-contact__details-head > span {
   color: var(--gold-300);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -2119,7 +2125,7 @@
 .dante-contact__details-head h3 {
   max-width: 380px;
   margin-top: 9px;
-  font-size: 30px;
+  font-size: 32px;
   line-height: 1.05;
 }
 
@@ -2164,7 +2170,7 @@ a.dante-contact-method:hover > svg {
 
 .dante-contact-method small {
   color: rgba(255, 255, 255, 0.36);
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
@@ -2172,14 +2178,14 @@ a.dante-contact-method:hover > svg {
 .dante-contact-method strong {
   margin-top: 3px;
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.25;
 }
 
 .dante-contact-method em {
   margin-top: 4px;
   color: rgba(255, 255, 255, 0.38);
-  font-size: 8px;
+  font-size: 9px;
   font-style: normal;
 }
 
@@ -2230,7 +2236,7 @@ a.dante-contact-method:hover > svg {
 
 .dante-map-placeholder small {
   color: var(--gold-300);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2238,7 +2244,7 @@ a.dante-contact-method:hover > svg {
 
 .dante-map-placeholder h3 {
   margin-top: 7px;
-  font-size: 26px;
+  font-size: 28px;
   line-height: 1.08;
 }
 
@@ -2287,7 +2293,7 @@ a.dante-contact-method:hover > svg {
 .dante-footer__brand > p {
   max-width: 390px;
   margin-top: 25px;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.75;
 }
 
@@ -2303,7 +2309,7 @@ a.dante-contact-method:hover > svg {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.34);
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2313,13 +2319,13 @@ a.dante-contact-method:hover > svg {
   flex-direction: column;
   align-items: flex-start;
   gap: 9px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .dante-footer__column small {
   margin-bottom: 10px;
   color: var(--gold-300);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -2338,6 +2344,8 @@ a.dante-contact-method:hover > svg {
 }
 
 .dante-footer__contact .dante-button {
+  display: flex;
+  align-items: center;
   margin-top: 15px;
 }
 
@@ -2349,7 +2357,7 @@ a.dante-contact-method:hover > svg {
   gap: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.3);
-  font-size: 7px;
+  font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -2486,7 +2494,7 @@ a.dante-contact-method:hover > svg {
   color: var(--navy-950);
   background: linear-gradient(140deg, var(--gold-300), var(--gold-500));
   box-shadow: 0 10px 25px rgba(189, 131, 37, 0.26);
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1;
   transition:
     background 0.3s ease,
@@ -2507,7 +2515,7 @@ a.dante-contact-method:hover > svg {
 .dante-modal__success h2 {
   color: white;
   font-family: var(--serif);
-  font-size: clamp(38px, 4vw, 52px);
+  font-size: clamp(41px, 4vw, 56px);
   font-weight: 600;
   letter-spacing: -0.035em;
   text-align: center;
@@ -2532,7 +2540,7 @@ a.dante-contact-method:hover > svg {
   color: var(--navy-900);
   background: rgba(255, 255, 255, 0.96);
   font: inherit;
-  font-size: 14px;
+  font-size: 16px;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
@@ -2576,7 +2584,7 @@ a.dante-contact-method:hover > svg {
   align-items: start;
   gap: 9px;
   color: rgba(255, 255, 255, 0.62);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   text-align: left;
   cursor: pointer;
@@ -2608,7 +2616,7 @@ a.dante-contact-method:hover > svg {
   box-shadow:
     0 16px 38px rgba(189, 131, 37, 0.26),
     inset 0 1px rgba(255, 255, 255, 0.45);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2641,7 +2649,7 @@ a.dante-contact-method:hover > svg {
   max-width: 520px;
   margin-top: 13px;
   color: rgba(255, 255, 255, 0.62);
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -3202,7 +3210,7 @@ a.dante-contact-method:hover > svg {
 
 .dante-footer__company {
   margin: 0;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.7;
   letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.42);
@@ -3286,13 +3294,13 @@ a.dante-contact-method:hover > svg {
   display: block;
   margin-bottom: 8px;
   font-family: var(--serif);
-  font-size: 21px;
+  font-size: 23px;
   color: var(--navy-900);
 }
 
 .dante-cookie__intro p {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.65;
   color: rgba(9, 18, 47, 0.72);
 }
@@ -3333,14 +3341,14 @@ a.dante-contact-method:hover > svg {
 
 .dante-cookie__option strong {
   display: block;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--navy-900);
 }
 
 .dante-cookie__option small {
   display: block;
   margin-top: 2px;
-  font-size: 11.5px;
+  font-size: 13px;
   line-height: 1.5;
   color: rgba(9, 18, 47, 0.6);
 }
@@ -3360,7 +3368,7 @@ a.dante-contact-method:hover > svg {
   background: transparent;
   color: var(--navy-900);
   font-family: var(--sans);
-  font-size: 12.5px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.02em;
   cursor: pointer;

@@ -124,7 +124,7 @@ export default function SiteFooter({
           <div className="dante-footer__column">
             <small>Servicii</small>
             {footerServices.map((service) => (
-              <a href={service.href} key={service.href}>
+              <a href={service.href} key={service.label}>
                 {service.label}
               </a>
             ))}

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useRef, useState } from "react";
+import { buildMailtoLink, clinic } from "./site-config";
 
 export default function AppointmentModal({
   open,
@@ -34,6 +35,18 @@ export default function AppointmentModal({
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!clinic.email) return;
+
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const countryCode = String(data.get("countryCode") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+
+    const mailtoHref = buildMailtoLink(clinic.email, `Programare rapidă — ${name}`, [
+      `Nume și prenume: ${name}`,
+      `Telefon: ${countryCode} ${phone}`,
+    ]);
+    window.location.href = mailtoHref;
     setSubmitted(true);
   };
 
@@ -63,11 +76,8 @@ export default function AppointmentModal({
 
         {submitted ? (
           <div className="dante-modal__success" role="status" aria-live="polite">
-            <h2 id="appointment-title">Mulțumim!</h2>
-            <p>
-              Formularul a fost validat. Trimiterea va deveni disponibilă după conectarea la
-              sistemul clinicii.
-            </p>
+            <h2 id="appointment-title">Aplicația de e-mail s-a deschis.</h2>
+            <p>Cererea ta e pregătită — apasă Trimite din aplicația de mail pentru a o finaliza.</p>
             <button type="button" onClick={closeModal}>
               Închide
             </button>

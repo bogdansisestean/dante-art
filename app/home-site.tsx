@@ -5,7 +5,8 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import AppointmentModal from "./appointment-modal";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
-import { clinic } from "./site-config";
+import { buildMailtoLink, clinic } from "./site-config";
+import { team } from "./team-data";
 
 type IconName =
   | "arrow"
@@ -302,6 +303,21 @@ function RequestForm({ compact = false }: { compact?: boolean }) {
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!clinic.email) return;
+
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") ?? "").trim();
+    const phone = String(data.get("phone") ?? "").trim();
+    const interest = String(data.get("interest") ?? "").trim();
+    const message = String(data.get("message") ?? "").trim();
+
+    const mailtoHref = buildMailtoLink(clinic.email, `Cerere de programare — ${name}`, [
+      `Nume și prenume: ${name}`,
+      `Telefon: ${phone}`,
+      interest && `Serviciu de interes: ${interest}`,
+      message && `Mesaj: ${message}`,
+    ]);
+    window.location.href = mailtoHref;
     setSubmitted(true);
   };
 
@@ -311,11 +327,8 @@ function RequestForm({ compact = false }: { compact?: boolean }) {
         <span>
           <Icon name="check" />
         </span>
-        <h3>Mulțumim pentru încredere!</h3>
-        <p>
-          Formularul a fost validat în interfață. Trimiterea efectivă va deveni disponibilă
-          după conectarea formularului la sistemul clinicii.
-        </p>
+        <h3>Aplicația de e-mail s-a deschis.</h3>
+        <p>Cererea ta e pregătită — apasă Trimite din aplicația de mail pentru a o finaliza.</p>
         <button
           type="button"
           className="dante-button dante-button--outline-dark"
@@ -859,17 +872,21 @@ export default function HomeSite() {
               </p>
             </div>
             <div className="dante-team__grid">
-              {[1, 2, 3].map((item) => (
-                <article key={item} data-dante-reveal>
+              {team.slice(0, 3).map((member, index) => (
+                <article key={member.slug} data-dante-reveal>
                   <div className="dante-team-card__portrait">
-                    <span>DA</span>
-                    <small>Fotografie în curs de actualizare</small>
+                    <Image
+                      src={member.image}
+                      alt={member.imageAlt}
+                      fill
+                      sizes="(max-width: 900px) 100vw, 33vw"
+                    />
                   </div>
                   <div className="dante-team-card__body">
-                    <span>0{item}</span>
+                    <span>0{index + 1}</span>
                     <div>
-                      <h3>Profil medical</h3>
-                      <p>Numele și specializarea vor fi publicate după confirmare.</p>
+                      <h3>{member.name}</h3>
+                      <p>{member.shortCard}</p>
                     </div>
                   </div>
                 </article>
@@ -1102,18 +1119,6 @@ export default function HomeSite() {
       </main>
 
       <SiteFooter onAppointment={openAppointment} />
-
-      {publishedWhatsApp && (
-        <a
-          href={clinic.whatsappHref}
-          className="dante-floating-whatsapp"
-          aria-label="Contactează-ne pe WhatsApp"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <Icon name="whatsapp" />
-        </a>
-      )}
 
       <button
         type="button"

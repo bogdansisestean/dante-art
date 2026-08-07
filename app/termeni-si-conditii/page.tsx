@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalLayout from "../legal-layout";
+import { clinic } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Termeni și condiții | Dantè Art Baia Mare",
@@ -30,7 +31,9 @@ export default function TermsPage() {
         <li>Nr. de ordine în Registrul Comerțului: J2024001014244</li>
         <li>EUID: ROONRC.J2024001014244</li>
         <li>Capital social: 500 lei</li>
-        <li>Telefon: 0770 733 891</li>
+        <li>
+          Telefon: <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a>
+        </li>
         <li>
           E-mail: <a href="mailto:contact.danteart@gmail.com">contact.danteart@gmail.com</a>
         </li>
@@ -217,7 +220,7 @@ export default function TermsPage() {
       <h2>11. Reclamații și soluționarea litigiilor</h2>
       <p>
         Dacă ești nemulțumit de serviciile noastre, te rugăm să ne contactezi mai întâi direct,
-        telefonic la 0770 733 891 sau pe e-mail la{" "}
+        telefonic la <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a> sau pe e-mail la{" "}
         <a href="mailto:contact.danteart@gmail.com">contact.danteart@gmail.com</a>. Îți răspundem în
         cel mult 30 de zile de la primirea sesizării. Majoritatea situațiilor se rezolvă prin dialog.
       </p>
@@ -266,7 +269,7 @@ export default function TermsPage() {
         <strong>DOCTORTIM S.R.L. — Clinica Dantè Art</strong>
         Str. Uranus nr. 1, parter, ap. 2, Baia Mare, județul Maramureș
         <br />
-        Telefon: 0770 733 891 · E-mail:{" "}
+        Telefon: <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a> · E-mail:{" "}
         <a href="mailto:contact.danteart@gmail.com">contact.danteart@gmail.com</a>
       </div>
     </LegalLayout>

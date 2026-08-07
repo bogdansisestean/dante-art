@@ -5,6 +5,7 @@ import { FormEvent, useEffect, useState } from "react";
 import BrandLogo from "./brand-logo";
 import HomeSite from "./home-site";
 import SiteHeader from "./site-header";
+import { clinic } from "./site-config";
 
 type IconName =
   | "arrow"
@@ -207,13 +208,6 @@ export type PageName =
   | "prices"
   | "contact";
 
-const headerClinic = {
-  city: "Baia Mare",
-  streetAddress: "Str. Uranus, Nr. 1, Etaj Parter, Apartament 2, Județ Maramureș",
-  phoneDisplay: "0770 733 891",
-  phoneHref: "tel:+40770733891",
-};
-
 const pageHeadings: Record<Exclude<PageName, "home">, [string, string, string]> = {
   about: ["01", "Lorem ipsum", "dolor sit amet."],
   services: ["02", "Dolor sit", "amet consectetur."],
@@ -309,7 +303,7 @@ function LegacyDentalSite({ page }: { page: PageName }) {
   return (
     <>
       <div className="progress-bar" style={{ width: `${progress}%` }} />
-      <SiteHeader clinic={headerClinic} />
+      <SiteHeader clinic={clinic} />
 
       <main className={`page page--${page}`}>
         {page !== "home" && <InnerHero page={page} />}
@@ -395,7 +389,7 @@ function LegacyDentalSite({ page }: { page: PageName }) {
           <div className="hero__footer shell">
             <div>
               <Icon name="map" />
-              <span>{headerClinic.streetAddress}</span>
+              <span>{clinic.streetAddress}</span>
             </div>
             <div>
               <Icon name="clock" />
@@ -872,7 +866,7 @@ function LegacyDentalSite({ page }: { page: PageName }) {
                   </span>
                   <div>
                     <small>Dolor sit amet</small>
-                    <strong>{headerClinic.streetAddress}</strong>
+                    <strong>{clinic.streetAddress}</strong>
                   </div>
                 </div>
               </div>
@@ -975,7 +969,7 @@ function LegacyDentalSite({ page }: { page: PageName }) {
               <small>Amet elit</small>
               <a href="tel:+40770733891">0770 733 891</a>
               <span>00:00 — 00:00</span>
-              <span>{headerClinic.streetAddress}</span>
+              <span>{clinic.streetAddress}</span>
             </div>
             <div className="footer__newsletter">
               <small>Consectetur</small>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalLayout from "../legal-layout";
+import { clinic } from "../site-config";
 
 export const metadata: Metadata = {
   title: "Politica de confidențialitate | Dantè Art Baia Mare",
@@ -35,7 +36,9 @@ export default function PrivacyPolicyPage() {
         <li>Cod unic de înregistrare (CUI): 50303647</li>
         <li>Număr de ordine în Registrul Comerțului: J2024001014244</li>
         <li>Identificator Unic European (EUID): ROONRC.J2024001014244</li>
-        <li>Telefon: 0770 733 891</li>
+        <li>
+          Telefon: <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a>
+        </li>
         <li>
           E-mail: <a href="mailto:contact.danteart@gmail.com">contact.danteart@gmail.com</a>
         </li>
@@ -475,7 +478,7 @@ export default function PrivacyPolicyPage() {
         <strong>DOCTORTIM S.R.L. — Clinica Dantè Art</strong>
         Str. Uranus nr. 1, parter, ap. 2, Baia Mare, județul Maramureș
         <br />
-        Telefon: 0770 733 891
+        Telefon: <a href={clinic.phoneHref}>{clinic.phoneDisplay}</a>
         <br />
         E-mail: <a href="mailto:contact.danteart@gmail.com">contact.danteart@gmail.com</a>
       </div>

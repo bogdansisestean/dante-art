@@ -20,7 +20,6 @@ const navigation = [
   { href: "/echipa", label: "Echipa" },
   { href: "/tehnologie", label: "Tehnologie" },
   { href: "/preturi", label: "Prețuri" },
-  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
