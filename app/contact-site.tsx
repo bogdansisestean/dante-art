@@ -210,32 +210,32 @@ export default function ContactSite() {
     external?: boolean;
     whatsapp?: boolean;
   }[] = [
-    ...(publishedPhone
-      ? [
-          {
-            key: "phone",
-            icon: "phone" as const,
-            label: "Sună-ne",
-            value: clinic.phoneDisplay!,
-            href: clinic.phoneHref!,
-            cta: "Apelează",
-          },
-        ]
-      : []),
-    ...(publishedWhatsApp
-      ? [
-          {
-            key: "whatsapp",
-            icon: "whatsapp" as const,
-            label: "Scrie-ne pe WhatsApp",
-            value: clinic.phoneDisplay ?? "WhatsApp",
-            href: clinic.whatsappHref!,
-            cta: "Deschide WhatsApp",
-            external: true,
-            whatsapp: true,
-          },
-        ]
-      : []),
+    // ...(publishedPhone
+    //   ? [
+    //       {
+    //         key: "phone",
+    //         icon: "phone" as const,
+    //         label: "Sună-ne",
+    //         value: clinic.phoneDisplay!,
+    //         href: clinic.phoneHref!,
+    //         cta: "Apelează",
+    //       },
+    //     ]
+    //   : []),
+    // ...(publishedWhatsApp
+    //   ? [
+    //       {
+    //         key: "whatsapp",
+    //         icon: "whatsapp" as const,
+    //         label: "Scrie-ne pe WhatsApp",
+    //         value: clinic.phoneDisplay ?? "WhatsApp",
+    //         href: clinic.whatsappHref!,
+    //         cta: "Deschide WhatsApp",
+    //         external: true,
+    //         whatsapp: true,
+    //       },
+    //     ]
+    //   : []),
     ...(clinic.email
       ? [
           {

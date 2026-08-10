@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import { clinic } from "./site-config";
@@ -178,25 +179,38 @@ export default function ServicesSite() {
         <section className="services-hero">
           <div className="services-hero__pattern" />
           <div className="services-hero__glow" />
-          <div className="dante-shell services-hero__inner" data-services-reveal>
-            <Eyebrow light>Servicii</Eyebrow>
-            <h1>De la o carie, până la o <em>reabilitare completă.</em></h1>
-            <p>
-              Acoperim tot ce ține de sănătatea și estetica dinților: igienizare, tratarea
-              cariilor, ortodonție, implanturi și lucrări protetice complexe. Indiferent de
-              tratament, pornim de la un diagnostic clar și de la un plan scris, cu toate
-              costurile stabilite înainte de prima intervenție.
-            </p>
-            <nav className="services-breadcrumbs" aria-label="Breadcrumb">
-              <a href="/">Acasă</a><span aria-hidden="true">›</span><strong>Servicii</strong>
-            </nav>
-            <div className="services-hero__actions">
-              <a href="/contact" className="dante-button dante-button--gold dante-button--large">
-                Programează o consultație <Icon name="arrow" />
-              </a>
-              <a href="/preturi" className="dante-button dante-button--ghost dante-button--large">
-                Vezi prețurile
-              </a>
+          <div className="dante-shell services-hero__grid">
+            <div className="services-hero__content" data-services-reveal>
+              <Eyebrow light>Servicii</Eyebrow>
+              <h1>De la o carie, până la o <em>reabilitare completă.</em></h1>
+              <p>
+                Acoperim tot ce ține de sănătatea și estetica dinților: igienizare, tratarea
+                cariilor, ortodonție, implanturi și lucrări protetice complexe. Indiferent de
+                tratament, pornim de la un diagnostic clar și de la un plan scris, cu toate
+                costurile stabilite înainte de prima intervenție.
+              </p>
+              <nav className="services-breadcrumbs" aria-label="Breadcrumb">
+                <a href="/">Acasă</a><span aria-hidden="true">›</span><strong>Servicii</strong>
+              </nav>
+              <div className="services-hero__actions">
+                <a href="/contact" className="dante-button dante-button--gold dante-button--large">
+                  Programează o consultație <Icon name="arrow" />
+                </a>
+                <a href="/preturi" className="dante-button dante-button--ghost dante-button--large">
+                  Vezi prețurile
+                </a>
+              </div>
+            </div>
+            <div className="services-hero__media" data-services-reveal>
+              <Image
+                src="/services-hero.jpg"
+                alt="Consultație stomatologică la clinica Dantè Art din Baia Mare"
+                fill
+                sizes="(max-width: 900px) 100vw, 48vw"
+                priority
+              />
+              <div className="services-hero__media-wash" />
+              <div className="services-hero__seal"><Icon name="sparkles" /><span>Dantè Art</span></div>
             </div>
           </div>
         </section>

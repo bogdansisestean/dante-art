@@ -716,7 +716,7 @@ export default function HomeSite() {
           </div>
         </section>
 
-        <section className="dante-smile-design">
+        {/* <section className="dante-smile-design">
           <div className="dante-smile-design__glow" />
           <div className="dante-shell dante-smile-design__grid">
             <div className="dante-smile-design__media" data-dante-reveal>
@@ -780,7 +780,7 @@ export default function HomeSite() {
               </a>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="dante-section dante-technology" id="tehnologie">
           <div className="dante-shell">
@@ -829,7 +829,7 @@ export default function HomeSite() {
               <div>
                 <Eyebrow light>Echipa</Eyebrow>
                 <h2>
-                  Oamenii din spatele <em>fiecărui zâmbet.</em>
+                  Oamenii din spatele fiecărui zâmbet.
                 </h2>
               </div>
               <p>

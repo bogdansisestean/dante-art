@@ -193,7 +193,7 @@ svg {
   gap: 10px;
   margin-bottom: 24px;
   color: var(--gold-600);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -333,7 +333,7 @@ svg {
   position: relative;
   padding: 10px 0;
   color: rgba(255, 255, 255, 0.78);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -1123,7 +1123,7 @@ svg {
   padding-bottom: 6px;
   border-bottom: 1px solid var(--gold-500);
   color: var(--navy-900);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -1991,7 +1991,7 @@ svg {
 .process__item p {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* Team */
@@ -2686,7 +2686,7 @@ svg {
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .footer__grid small {
