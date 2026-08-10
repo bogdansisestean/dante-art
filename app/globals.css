@@ -125,7 +125,7 @@ svg {
   padding: 0 24px;
   border: 1px solid transparent;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -492,7 +492,7 @@ svg {
 .mobile-menu a span {
   color: var(--gold-400);
   font-family: var(--sans);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 /* Route visibility */
@@ -628,7 +628,7 @@ svg {
   max-width: 580px;
   margin-top: 27px;
   color: rgba(255, 255, 255, 0.52);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .inner-hero__crumbs {
@@ -783,7 +783,7 @@ svg {
 
 .stars {
   color: var(--gold-300);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.12em;
   line-height: 1;
 }
@@ -792,7 +792,7 @@ svg {
   display: block;
   margin-top: 7px;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.08em;
 }
 
@@ -942,7 +942,7 @@ svg {
 }
 
 .floating-card strong {
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 0.06em;
 }
 
@@ -1048,7 +1048,7 @@ svg {
   align-items: center;
   gap: 35px;
   padding: 17px 18px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.2em;
   white-space: nowrap;
@@ -1506,7 +1506,7 @@ svg {
   max-width: 340px;
   margin-top: 17px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .service-card--featured p {
@@ -1647,7 +1647,7 @@ svg {
 .technology__item small {
   margin-top: 3px;
   color: rgba(255, 255, 255, 0.42);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .technology__item > svg {
@@ -1785,7 +1785,7 @@ svg {
 }
 
 .scan-panel__top strong {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .scan-panel__top small {
@@ -2159,7 +2159,7 @@ svg {
 .testimonials__side > p {
   margin-top: 17px;
   color: rgba(255, 255, 255, 0.45);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .testimonial-dots {
@@ -2234,7 +2234,7 @@ svg {
   border-radius: 50%;
   color: var(--navy-950);
   background: linear-gradient(140deg, var(--gold-300), var(--gold-500));
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -2308,7 +2308,7 @@ svg {
   max-width: 430px;
   margin: 27px 0 35px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .faq__list {
@@ -2368,7 +2368,7 @@ svg {
   max-width: 650px;
   overflow: hidden;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   transition: padding 0.45s var(--ease);
 }
 
@@ -2566,7 +2566,7 @@ svg {
   outline: none;
   color: var(--navy-900);
   background: rgba(9, 18, 47, 0.025);
-  font-size: 12px;
+  font-size: 14px;
   transition:
     border-color 0.3s,
     box-shadow 0.3s,
@@ -2642,7 +2642,7 @@ svg {
 .contact-form__success p {
   margin: 12px 0 28px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 /* Footer */
@@ -2671,7 +2671,7 @@ svg {
 
 .footer__top p {
   max-width: 520px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .footer__grid {
@@ -2722,7 +2722,7 @@ svg {
   outline: none;
   color: white;
   background: rgba(255, 255, 255, 0.05);
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .footer__newsletter button {
@@ -2983,7 +2983,7 @@ svg {
   }
 
   .inner-hero__content > p {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .hero h1 {
@@ -2991,7 +2991,7 @@ svg {
   }
 
   .hero__content > p {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .hero__actions {

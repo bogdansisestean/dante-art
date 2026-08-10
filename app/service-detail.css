@@ -77,7 +77,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -133,7 +133,7 @@
   border: 1px solid rgba(189, 131, 37, 0.3);
   border-radius: 50%;
   color: var(--gold-600);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -345,7 +345,7 @@
 
 .sd-faq__list summary span {
   color: var(--gold-500);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 

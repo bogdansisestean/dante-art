@@ -82,7 +82,7 @@ export default function AboutSite() {
           <div className="dante-shell about-hero__grid">
             <div className="about-hero__content" data-about-reveal>
               <Eyebrow light>Despre noi</Eyebrow>
-              <h1><em>Excelență medicală</em> definită de timp, rigoare și atenție la detalii.</h1>
+              <h1>Excelență medicală definită de timp, rigoare și atenție la detalii.</h1>
               <p>
                 Dantè Art este o clinică stomatologică din Baia Mare fondată de Dr. Ileana Zaharie,
                 din dorința de a oferi un standard ridicat de îngrijire dentară. Alocăm timp generos

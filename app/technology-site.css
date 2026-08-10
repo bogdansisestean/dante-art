@@ -203,7 +203,7 @@
   border-radius: 999px;
   color: var(--navy-900);
   background: rgba(255, 255, 255, 0.75);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -255,7 +255,7 @@
   border: 1px solid rgba(240, 207, 130, 0.3);
   border-radius: 50%;
   color: var(--gold-300);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
