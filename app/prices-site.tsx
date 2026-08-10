@@ -374,8 +374,8 @@ export default function PricesSite() {
             <div className="prices-hero__media">
               <div className="prices-hero__image">
                 <Image
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=90"
-                  alt="Plan de tratament explicat la clinica stomatologică Dantè Art din Baia Mare — imagine ilustrativă"
+                  src="/prices-hero.jpg"
+                  alt="Cabinet stomatologic la clinica Dantè Art din Baia Mare"
                   fill
                   sizes="(max-width: 980px) 92vw, 42vw"
                   priority

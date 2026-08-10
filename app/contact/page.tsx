@@ -4,7 +4,7 @@ import ContactSite from "../contact-site";
 export const metadata: Metadata = {
   title: "Contact | Clinică stomatologică Dantè Art — Baia Mare",
   description:
-    "Programări la clinica stomatologică Dante Art din Baia Mare, Aleea Uranus nr. 1. Luni – Vineri, 09:00 – 20:00. Telefon, WhatsApp și formular de contact.",
+    "Programează o consultație la clinica stomatologică Dantè Art din Baia Mare. Ne găsești pe Aleea Uranus nr. 1. Contact prin telefon, WhatsApp sau formular online. Program: Luni – Vineri, 09:00 – 20:00.",
   alternates: {
     canonical: "/contact",
   },

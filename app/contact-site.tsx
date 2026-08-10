@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useEffect, useState } from "react";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import { buildMailtoLink, clinic } from "./site-config";
 
-type IconName = "arrow" | "calendar" | "check" | "clock" | "mail" | "map" | "phone" | "whatsapp";
+type IconName = "arrow" | "calendar" | "check" | "clock" | "mail" | "map" | "phone" | "sparkles" | "whatsapp";
 
 function Icon({ name }: { name: IconName }) {
   const common = {
@@ -25,6 +26,7 @@ function Icon({ name }: { name: IconName }) {
   if (name === "mail") return <svg {...common}><rect x="3" y="5" width="18" height="14" rx="3" /><path d="m4 7 8 6 8-6" /></svg>;
   if (name === "map") return <svg {...common}><path d="M12 21s6-5.6 6-11a6 6 0 1 0-12 0c0 5.4 6 11 6 11Z" /><circle cx="12" cy="10" r="2" /></svg>;
   if (name === "phone") return <svg {...common}><path d="M6.4 3.5h3l1.5 4-2 1.5a14 14 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A14.5 14.5 0 0 1 4.4 5.5a2 2 0 0 1 2-2Z" /></svg>;
+  if (name === "sparkles") return <svg {...common}><path d="m12 2 1.4 4.6L18 8l-4.6 1.4L12 14l-1.4-4.6L6 8l4.6-1.4L12 2ZM18.5 14l.8 2.7 2.7.8-2.7.8-.8 2.7-.8-2.7-2.7-.8 2.7-.8.8-2.7Z" /></svg>;
   return (
     <svg {...common}>
       <path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.3-4.3a8.5 8.5 0 1 1 15.7-4.4Z" />
@@ -44,11 +46,11 @@ function Eyebrow({ children, light = false }: { children: React.ReactNode; light
 
 type FormErrors = Partial<Record<"name" | "phone" | "message" | "consent", string>>;
 
-const REQUIRED_MESSAGE = "Acest câmp este obligatoriu";
+const REQUIRED_MESSAGE = "Acest câmp este obligatoriu.";
 const PHONE_PATTERN = /^(\+40|0)?7\d{8}$/;
 
 function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [errors, setErrors] = useState<FormErrors>({});
 
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
@@ -67,13 +69,16 @@ function ContactForm() {
     if (!phone) {
       nextErrors.phone = REQUIRED_MESSAGE;
     } else if (!PHONE_PATTERN.test(phone)) {
-      nextErrors.phone = "Introdu un număr de telefon valid";
+      nextErrors.phone = "Introdu un număr de telefon valid.";
     }
     if (!message) nextErrors.message = REQUIRED_MESSAGE;
-    if (!consent) nextErrors.consent = "Bifează acordul pentru a putea trimite mesajul";
+    if (!consent) nextErrors.consent = "Bifează acordul pentru a putea trimite mesajul.";
 
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0 && clinic.email) {
+    if (Object.keys(nextErrors).length > 0) return;
+
+    try {
+      if (!clinic.email) throw new Error("Missing destination email");
       const mailtoHref = buildMailtoLink(clinic.email, `Mesaj de contact — ${name}`, [
         `Nume și prenume: ${name}`,
         `Telefon: ${rawPhone}`,
@@ -82,22 +87,24 @@ function ContactForm() {
         `Mesaj: ${message}`,
       ]);
       window.location.href = mailtoHref;
-      setSubmitted(true);
+      setStatus("success");
+    } catch {
+      setStatus("error");
     }
   };
 
-  if (submitted) {
+  if (status === "success") {
     return (
       <div className="dante-form-success" role="status" aria-live="polite">
         <span>
           <Icon name="check" />
         </span>
-        <h3>Aplicația de e-mail s-a deschis.</h3>
-        <p>Mesajul tău e pregătit — apasă Trimite din aplicația de mail pentru a ne contacta.</p>
+        <h3>Mesajul a fost trimis.</h3>
+        <p>Te contactăm în cel mai scurt timp pentru stabilirea programării.</p>
         <button
           type="button"
           className="dante-button dante-button--outline-dark"
-          onClick={() => setSubmitted(false)}
+          onClick={() => setStatus("idle")}
         >
           Trimite un alt mesaj
         </button>
@@ -107,6 +114,12 @@ function ContactForm() {
 
   return (
     <form className="dante-request-form" onSubmit={submitForm} noValidate>
+      {status === "error" && (
+        <p className="contact-form__alert" role="alert">
+          Mesajul nu a putut fi trimis. Te rugăm să ne suni la{" "}
+          {clinic.phoneHref ? <a href={clinic.phoneHref}>{clinic.phoneDisplay ?? "0770 733 891"}</a> : "0770 733 891"}.
+        </p>
+      )}
       <div className="dante-form-grid">
         <label className={errors.name ? "has-error" : ""}>
           <span>Nume și prenume *</span>
@@ -138,7 +151,7 @@ function ContactForm() {
           <textarea
             name="message"
             rows={5}
-            placeholder="Descrie pe scurt ce te deranjează sau ce tratament te interesează"
+            placeholder="Descrie pe scurt ce te deranjează sau ce tratament te interesează."
           />
           {errors.message && <small className="contact-form__error">{errors.message}</small>}
         </label>
@@ -184,16 +197,30 @@ export default function ContactSite() {
   const publishedPhone = Boolean(clinic.phoneDisplay && clinic.phoneHref);
   const publishedWhatsApp = Boolean(clinic.whatsappHref);
 
+  // Contact cards — each is an interactive CTA (icon + info + action button),
+  // ordered by the action hierarchy from the content spec:
+  // Telefon → WhatsApp → E-mail → Adresă.
   const contactMethods: {
     key: string;
     icon: IconName;
     label: string;
     value: string;
     href: string;
+    cta: string;
+    external?: boolean;
     whatsapp?: boolean;
   }[] = [
     ...(publishedPhone
-      ? [{ key: "phone", icon: "phone" as const, label: "Sună-ne", value: clinic.phoneDisplay!, href: clinic.phoneHref! }]
+      ? [
+          {
+            key: "phone",
+            icon: "phone" as const,
+            label: "Sună-ne",
+            value: clinic.phoneDisplay!,
+            href: clinic.phoneHref!,
+            cta: "Apelează",
+          },
+        ]
       : []),
     ...(publishedWhatsApp
       ? [
@@ -203,12 +230,23 @@ export default function ContactSite() {
             label: "Scrie-ne pe WhatsApp",
             value: clinic.phoneDisplay ?? "WhatsApp",
             href: clinic.whatsappHref!,
+            cta: "Deschide WhatsApp",
+            external: true,
             whatsapp: true,
           },
         ]
       : []),
     ...(clinic.email
-      ? [{ key: "email", icon: "mail" as const, label: "E-mail", value: clinic.email, href: `mailto:${clinic.email}` }]
+      ? [
+          {
+            key: "email",
+            icon: "mail" as const,
+            label: "Trimite-ne un e-mail",
+            value: clinic.email,
+            href: `mailto:${clinic.email}`,
+            cta: "Scrie-ne",
+          },
+        ]
       : []),
     ...(clinic.streetAddress
       ? [
@@ -218,6 +256,8 @@ export default function ContactSite() {
             label: "Ne găsești aici",
             value: clinic.streetAddress,
             href: clinic.mapsUrl ?? "#",
+            cta: "Deschide în Google Maps",
+            external: true,
           },
         ]
       : []),
@@ -229,20 +269,64 @@ export default function ContactSite() {
       <SiteHeader clinic={clinic} />
 
       <main>
-        <section className="legal-hero">
-          <div className="legal-hero__glow" />
-          <div className="dante-shell">
-            <nav className="legal-hero__crumbs" aria-label="Breadcrumb">
-              <a href="/">Acasă</a>
-              <span aria-hidden="true">›</span>
-              <strong>Contact</strong>
-            </nav>
-            <Eyebrow light>Contact</Eyebrow>
-            <h1>Programează o consultație.</h1>
-            <p className="contact-hero__intro">
-              Ne poți suna, scrie pe WhatsApp sau trimite un mesaj prin formularul de mai jos. Îți
-              răspundem în aceeași zi lucrătoare și stabilim împreună ora potrivită pentru tine.
-            </p>
+        <section className="contact-hero">
+          <div className="contact-hero__media">
+            <Image
+              src="/contact-hero.jpg"
+              alt="Cabinetul clinicii stomatologice Dantè Art din Baia Mare"
+              fill
+              sizes="(max-width: 900px) 100vw, 55vw"
+              priority
+            />
+            <div className="contact-hero__media-fade" />
+          </div>
+          <div className="contact-hero__glow" />
+          <div className="dante-shell contact-hero__inner">
+            <div className="contact-hero__content" data-contact-reveal>
+              <nav className="legal-hero__crumbs" aria-label="Breadcrumb">
+                <a href="/">Acasă</a>
+                <span aria-hidden="true">›</span>
+                <strong>Contact</strong>
+              </nav>
+              <Eyebrow light>Contact</Eyebrow>
+              <h1>Programează o consultație.</h1>
+              <p className="contact-hero__intro">
+                Ai întrebări sau dorești o programare? Ne poți suna, scrie pe WhatsApp sau trimite un
+                mesaj prin formularul de mai jos. Îți răspundem în aceeași zi lucrătoare și stabilim
+                împreună intervalul potrivit pentru tine.
+              </p>
+
+              <div className="contact-hero__actions">
+                {publishedWhatsApp && (
+                  <a
+                    href={clinic.whatsappHref}
+                    className="dante-button dante-button--whatsapp dante-button--large"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <Icon name="whatsapp" />
+                    Scrie-ne pe WhatsApp
+                  </a>
+                )}
+                {publishedPhone && (
+                  <a
+                    href={clinic.phoneHref}
+                    className="dante-button dante-button--gold dante-button--large"
+                  >
+                    <Icon name="phone" />
+                    Sună acum
+                  </a>
+                )}
+              </div>
+
+              <div className="contact-hero__program">
+                <Icon name="clock" />
+                <span>
+                  {clinic.weekdayHours && <>Program: Luni – Vineri: {clinic.weekdayHours} · </>}
+                  Răspundem în aceeași zi lucrătoare
+                </span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -250,22 +334,28 @@ export default function ContactSite() {
           <div className="dante-shell">
             <div className="contact-info__grid">
               {contactMethods.map((method) => (
-                <a
+                <div
                   key={method.key}
-                  href={method.href}
-                  className={`contact-info__item ${method.whatsapp ? "contact-info__item--whatsapp" : ""}`}
-                  target={method.key === "address" || method.whatsapp ? "_blank" : undefined}
-                  rel={method.key === "address" || method.whatsapp ? "noreferrer" : undefined}
+                  className={`contact-card ${method.whatsapp ? "contact-card--whatsapp" : ""}`}
                   data-contact-reveal
                 >
-                  <span>
+                  <span className="contact-card__icon">
                     <Icon name={method.icon} />
                   </span>
-                  <div>
+                  <div className="contact-card__body">
                     <small>{method.label}</small>
                     <strong>{method.value}</strong>
                   </div>
-                </a>
+                  <a
+                    href={method.href}
+                    className="contact-card__cta"
+                    target={method.external ? "_blank" : undefined}
+                    rel={method.external ? "noreferrer" : undefined}
+                  >
+                    {method.cta}
+                    <Icon name="arrow" />
+                  </a>
+                </div>
               ))}
             </div>
 
@@ -281,6 +371,15 @@ export default function ContactSite() {
                 </div>
               </div>
             )}
+          </div>
+        </section>
+
+        <section className="contact-map-section">
+          <div className="dante-shell">
+            <header className="contact-map__head" data-contact-reveal>
+              <Eyebrow>Hartă și acces</Eyebrow>
+              <h2>Cum ajungi la noi</h2>
+            </header>
 
             <div className="contact-map" data-contact-reveal>
               {mapLoaded && clinic.mapsEmbedUrl ? (
@@ -334,7 +433,7 @@ export default function ContactSite() {
                 </span>
                 <div>
                   <h3>Lasă-ne un mesaj</h3>
-                  <p>Completează datele și te contactăm noi pentru programare.</p>
+                  <p>Completează datele de mai jos și te contactăm pentru stabilirea programării.</p>
                 </div>
               </div>
               <ContactForm />

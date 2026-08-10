@@ -150,6 +150,15 @@
   filter: saturate(0.85);
 }
 
+.tech-block__media--contain {
+  background: #f2f0ea;
+}
+
+.tech-block__media--contain img {
+  object-fit: contain;
+  padding: 24px;
+}
+
 .tech-block__content {
   position: relative;
 }

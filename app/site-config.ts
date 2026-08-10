@@ -25,10 +25,12 @@ export const clinic: ClinicDetails = {
   weekdayHours: "09:00–20:00",
   saturdayHours: "Închis",
   sundayHours: "Închis",
+  // Pin fixed to exact clinic coordinates (47.6493962, 23.5558489) instead of
+  // geocoding the street address, which Google was placing at the wrong spot.
   mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Aleea+Uranus+1%2C+Baia+Mare%2C+Maramure%C8%99",
+    "https://www.google.com/maps/search/?api=1&query=47.6493962%2C23.5558489",
   mapsEmbedUrl:
-    "https://www.google.com/maps?q=Aleea%20Uranus%201%2C%20Baia%20Mare%2C%20Maramure%C8%99&output=embed",
+    "https://www.google.com/maps?q=47.6493962,23.5558489&output=embed",
 };
 
 // Legal entity behind the Dantè Art brand.
@@ -74,6 +76,18 @@ export const anpc = {
   label: "ANPC – Soluționarea Alternativă a Litigiilor",
 };
 
+// Live /servicii/[slug] pages, surfaced in the header "Servicii" dropdown.
+// Only treatments with a published page belong here, so no link 404s. Order
+// mirrors the /servicii grid. Add a treatment once its page goes live.
+export const servicesMenu = [
+  { href: "/servicii/ortodontie-baia-mare", label: "Ortodonție" },
+  { href: "/servicii/fatete-dentare-baia-mare", label: "Fațete dentare" },
+  { href: "/servicii/albire-dentara-baia-mare", label: "Albire dentară" },
+  { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Coroane și proteze" },
+  { href: "/servicii/igienizare-dentara-baia-mare", label: "Igienizare și prevenție" },
+  { href: "/servicii/tratament-de-canal-baia-mare", label: "Tratament de canal" },
+];
+
 export const footerNavigation = [
   { href: "/", label: "Acasă" },
   { href: "/despre", label: "Despre noi" },
@@ -83,13 +97,15 @@ export const footerNavigation = [
   { href: "/contact", label: "Contact" },
 ];
 
-// Individual /servicii/[nume-tratament] pages aren't built yet — link into the
-// matching /preturi section instead of a 404 until each page goes live.
+// As each /servicii/[nume-tratament] page goes live, its footer link points to
+// the page. Treatments without a dedicated page yet (implant) link into the
+// matching /preturi section so they never lead to a 404.
 export const footerServices = [
   { href: "/preturi#implantologie", label: "Implant dentar" },
-  { href: "/preturi#protetica", label: "Fațete dentare" },
-  { href: "/preturi#albire", label: "Albire dentară" },
-  { href: "/preturi#ortodontie", label: "Ortodonție" },
-  { href: "/preturi#protetica", label: "Coroane și proteze" },
-  { href: "/preturi#igienizare", label: "Igienizare și prevenție" },
+  { href: "/servicii/ortodontie-baia-mare", label: "Ortodonție" },
+  { href: "/servicii/fatete-dentare-baia-mare", label: "Fațete dentare" },
+  { href: "/servicii/albire-dentara-baia-mare", label: "Albire dentară" },
+  { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Coroane și proteze" },
+  { href: "/servicii/tratament-de-canal-baia-mare", label: "Tratament de canal" },
+  { href: "/servicii/igienizare-dentara-baia-mare", label: "Igienizare și prevenție" },
 ];

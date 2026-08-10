@@ -5,6 +5,7 @@ import "./prices-site.css";
 import "./about-site.css";
 import "./team-site.css";
 import "./services-site.css";
+import "./service-detail.css";
 import "./contact-site.css";
 import "./technology-site.css";
 import "./legal.css";

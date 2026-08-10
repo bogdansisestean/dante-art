@@ -7,6 +7,7 @@ import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import { buildMailtoLink, clinic } from "./site-config";
 import { team } from "./team-data";
+import { equipmentBlocks } from "./technology-data";
 
 type IconName =
   | "arrow"
@@ -74,13 +75,6 @@ const services: {
     number: "03",
     title: "Albire dentară",
     text: "Albire profesională, sigură pentru smalț, cu rezultate vizibile de la prima ședință.",
-  },
-  {
-    href: "/servicii/estetica-dentara-baia-mare",
-    icon: "scan",
-    number: "04",
-    title: "Estetică dentară & Smile Design",
-    text: "Îți arătăm cum va arăta zâmbetul tău înainte să începem tratamentul.",
   },
   {
     href: "/servicii/ortodontie-baia-mare",
@@ -634,16 +628,16 @@ export default function HomeSite() {
             <div className="dante-about__media" data-dante-reveal>
               <div className="dante-about__image dante-about__image--large">
                 <Image
-                  src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=90"
-                  alt="Interior de cabinet stomatologic modern — imagine ilustrativă"
+                  src="/about-hero.jpg"
+                  alt="Cabinetul clinicii stomatologice Dantè Art din Baia Mare"
                   fill
                   sizes="(max-width: 900px) 90vw, 44vw"
                 />
               </div>
               <div className="dante-about__image dante-about__image--small">
                 <Image
-                  src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=90"
-                  alt="Detaliu de echipament stomatologic — imagine ilustrativă"
+                  src="/about-waiting.jpg"
+                  alt="Sala de așteptare a clinicii stomatologice Dantè Art din Baia Mare"
                   fill
                   sizes="260px"
                 />
@@ -657,7 +651,7 @@ export default function HomeSite() {
             <div className="dante-about__content" data-dante-reveal>
               <Eyebrow>Despre noi</Eyebrow>
               <h2>
-                Stomatologie făcută cu precizie și <em>atenție la detalii.</em>
+                Stomatologie făcută cu precizie și atenție la detalii.
               </h2>
               <p>
                 La Dantè Art ne dorim ca fiecare vizită la dentist să fie cât mai confortabilă.
@@ -683,7 +677,7 @@ export default function HomeSite() {
               <div>
                 <Eyebrow>Serviciile noastre</Eyebrow>
                 <h2>
-                  Servicii stomatologice complete <em>în Baia Mare</em>
+                  Servicii stomatologice complete în Baia Mare
                 </h2>
               </div>
               <p>
@@ -803,49 +797,21 @@ export default function HomeSite() {
               </p>
             </div>
             <div className="dante-technology__grid">
-              <article data-dante-reveal>
-                <div className="dante-technology-card__image">
-                  <Image
-                    src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=88"
-                    alt="Aparatură stomatologică digitală — imagine ilustrativă"
-                    fill
-                    sizes="(max-width: 800px) 90vw, 32vw"
-                  />
-                </div>
-                <span>01</span>
-                <h3>Radiologie digitală</h3>
-                <p>
-                  Obținem imagini clare pentru un diagnostic rapid și precis, cu o doză redusă
-                  de radiații.
-                </p>
-              </article>
-              <article data-dante-reveal>
-                <div className="dante-technology-card__image">
-                  <Image
-                    src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1000&q=88"
-                    alt="Consultație stomatologică asistată digital — imagine ilustrativă"
-                    fill
-                    sizes="(max-width: 800px) 90vw, 32vw"
-                  />
-                </div>
-                <span>02</span>
-                <h3>Scanner intraoral</h3>
-                <p>
-                  Realizăm amprente digitale rapide și confortabile, fără materialele clasice
-                  de amprentare.
-                </p>
-              </article>
-              <article className="dante-technology-card--pending" data-dante-reveal>
-                <div className="dante-technology-card__placeholder">
-                  <Icon name="scan" />
-                </div>
-                <span>03</span>
-                <h3>Dotare în curs de confirmare</h3>
-                <p>
-                  Echipamentul și beneficiile sale vor fi publicate după confirmarea informației
-                  de către clinică.
-                </p>
-              </article>
+              {equipmentBlocks.map((block, index) => (
+                <article key={block.cardTitle} data-dante-reveal>
+                  <div className="dante-technology-card__image">
+                    <Image
+                      src={block.image}
+                      alt={block.alt}
+                      fill
+                      sizes="(max-width: 800px) 90vw, 32vw"
+                    />
+                  </div>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <h3>{block.cardTitle}</h3>
+                  <p>{block.cardText}</p>
+                </article>
+              ))}
             </div>
             <div className="dante-center-action">
               <a href="/tehnologie" className="dante-button dante-button--outline-dark">

@@ -310,6 +310,79 @@
   color: var(--gold-600);
 }
 
+/* "Servicii" dropdown */
+.dante-nav__has-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dante-nav__has-menu > a span {
+  font-size: 9px;
+  transition: transform 0.3s var(--ease);
+}
+
+.dante-nav__has-menu.is-open > a span {
+  transform: rotate(180deg);
+}
+
+.dante-nav__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  min-width: 244px;
+  padding: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 1px solid rgba(9, 18, 47, 0.09);
+  border-radius: 18px;
+  background: rgba(255, 254, 250, 0.98);
+  box-shadow: 0 26px 70px rgba(5, 11, 33, 0.2);
+  backdrop-filter: blur(22px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition:
+    opacity 0.28s var(--ease),
+    transform 0.28s var(--ease),
+    visibility 0.28s;
+  z-index: 20;
+}
+
+.dante-nav__has-menu.is-open .dante-nav__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+/* Panel sits on cream, so links stay dark in both header states. Higher
+   specificity than the .dante-nav__links a colour rules, no !important. */
+.dante-header .dante-nav__dropdown a,
+.dante-header.is-scrolled .dante-nav__dropdown a {
+  padding: 11px 15px;
+  border-radius: 12px;
+  color: rgba(5, 11, 33, 0.74);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.dante-nav__dropdown a::after {
+  content: none;
+}
+
+.dante-nav__dropdown a:hover,
+.dante-nav__dropdown a:focus-visible {
+  color: var(--navy-950);
+  background: rgba(189, 131, 37, 0.12);
+}
+
+.dante-nav__dropdown a.is-current {
+  color: var(--gold-600);
+  background: rgba(189, 131, 37, 0.08);
+}
+
 .dante-nav__actions {
   display: flex;
   align-items: center;
@@ -491,6 +564,25 @@
   font-family: var(--sans);
   font-size: 9px;
   letter-spacing: 0.1em;
+}
+
+.dante-mobile-menu__sub {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 14px 42px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dante-mobile-menu__sub a {
+  padding: 9px 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.dante-mobile-menu__sub a:hover {
+  color: var(--gold-300);
 }
 
 /* Hero */
@@ -1467,6 +1559,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 21px;
+}
+
+/* Center a lone trailing card in the middle column of the 3-up desktop grid. */
+@media (min-width: 981px) {
+  .dante-technology__grid > article:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
 }
 
 .dante-technology__grid article {

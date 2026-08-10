@@ -1,0 +1,500 @@
+.service-detail {
+  min-height: 100vh;
+  overflow: clip;
+  color: var(--navy-900);
+  background: var(--cream);
+}
+
+[data-service-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+
+[data-service-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hero — navy gradient, matching /servicii and /preturi. */
+.sd-hero {
+  position: relative;
+  padding: 190px 0 95px;
+  overflow: hidden;
+  color: white;
+  background:
+    radial-gradient(circle at 92% 15%, rgba(220, 174, 77, 0.16), transparent 30%),
+    linear-gradient(120deg, var(--navy-950), var(--navy-900) 62%, var(--navy-800));
+}
+
+.sd-hero__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image: linear-gradient(to left, black, transparent 80%);
+}
+
+.sd-hero__glow {
+  position: absolute;
+  top: -190px;
+  left: -140px;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  background: rgba(30, 58, 115, 0.55);
+  filter: blur(120px);
+}
+
+.sd-hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+.sd-hero h1 {
+  margin-top: 4px;
+  font-size: clamp(44px, 5vw, 76px);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.sd-hero__inner > p {
+  max-width: 660px;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.sd-breadcrumbs {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sd-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.25s ease;
+}
+
+.sd-breadcrumbs a:hover {
+  color: var(--gold-300);
+}
+
+.sd-breadcrumbs strong {
+  color: var(--gold-300);
+  font-weight: 600;
+}
+
+.sd-hero__actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+/* Quick band — three short facts on paper. */
+.sd-band {
+  position: relative;
+  padding: clamp(56px, 6vw, 84px) 0;
+  background:
+    radial-gradient(circle at 4% 12%, rgba(220, 174, 77, 0.1), transparent 26%),
+    var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.sd-band__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.sd-band__grid article {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+.sd-band__grid span {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 1px solid rgba(189, 131, 37, 0.3);
+  border-radius: 50%;
+  color: var(--gold-600);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sd-band__grid p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.sd-band__grid strong {
+  color: var(--navy-900);
+  font-weight: 700;
+}
+
+/* "Când ai nevoie" — copy + a chip list of situations. */
+.sd-need {
+  padding: clamp(80px, 9vw, 130px) 0;
+}
+
+.sd-need__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: clamp(40px, 6vw, 90px);
+}
+
+/* When a service has no situations list, the copy fills the row on its own. */
+.sd-need__grid--full {
+  grid-template-columns: 1fr;
+}
+
+.sd-need__grid--full .sd-need__intro h2 {
+  max-width: 760px;
+}
+
+.sd-need__grid--full .sd-need__intro p {
+  max-width: 760px;
+}
+
+.sd-need__intro h2 {
+  margin-top: 16px;
+  font-size: clamp(31px, 3.4vw, 48px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.sd-need__intro p {
+  max-width: 520px;
+  margin-top: 20px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.sd-need__points {
+  display: grid;
+  gap: 12px;
+}
+
+.sd-need__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--navy-900);
+  font-size: 15px;
+  line-height: 1.55;
+  box-shadow: var(--shadow-soft);
+}
+
+.sd-need__points svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: var(--gold-600);
+}
+
+/* Process — numbered steps. */
+.sd-process {
+  padding: clamp(80px, 9vw, 130px) 0;
+  background:
+    radial-gradient(circle at 96% 88%, rgba(220, 174, 77, 0.1), transparent 24%),
+    var(--paper);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.sd-process__head {
+  max-width: 620px;
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.sd-process__head h2 {
+  margin-top: 16px;
+  font-size: clamp(31px, 3.4vw, 48px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.sd-process__steps {
+  display: grid;
+  gap: 18px;
+}
+
+.sd-process__steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(18px, 3vw, 34px);
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 22px 70px rgba(9, 18, 47, 0.06);
+}
+
+.sd-process__num {
+  flex: none;
+  color: var(--gold-500);
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 0.9;
+}
+
+.sd-process__steps p {
+  padding-top: 6px;
+  color: var(--navy-900);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Costs — reuses .prices-table-wrap from prices-site.css. */
+.sd-costs {
+  padding: clamp(80px, 9vw, 130px) 0;
+}
+
+.sd-costs__head {
+  max-width: 620px;
+  margin-bottom: clamp(34px, 4vw, 52px);
+}
+
+.sd-costs__head h2 {
+  margin-top: 16px;
+  font-size: clamp(31px, 3.4vw, 48px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+.sd-costs .price-group__note {
+  max-width: 720px;
+}
+
+/* FAQ — accordion, same visual language as the prices FAQ. */
+.sd-faq {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+}
+
+.sd-faq__grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
+
+.sd-faq__intro h2 {
+  margin-top: 16px;
+  font-size: clamp(31px, 3.4vw, 48px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.sd-faq__list {
+  display: grid;
+  gap: 14px;
+}
+
+.sd-faq__list details {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.sd-faq__list details[open] {
+  border-color: rgba(189, 131, 37, 0.4);
+  box-shadow: var(--shadow-soft);
+}
+
+.sd-faq__list summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.sd-faq__list summary::-webkit-details-marker {
+  display: none;
+}
+
+.sd-faq__list summary span {
+  color: var(--gold-500);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sd-faq__list summary strong {
+  flex: 1;
+  color: var(--navy-900);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.sd-faq__list summary i {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--gold-600);
+  font-size: 18px;
+  font-style: normal;
+  line-height: 1;
+  transition: transform 0.3s var(--ease);
+}
+
+.sd-faq__list details[open] summary i {
+  transform: rotate(45deg);
+}
+
+.sd-faq__list details p {
+  padding: 0 24px 24px 56px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+/* Final CTA — navy, matching the site CTAs. */
+.sd-cta {
+  position: relative;
+  padding: clamp(100px, 11vw, 155px) 0;
+  overflow: hidden;
+  color: white;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(220, 174, 77, 0.18), transparent 30%),
+    linear-gradient(120deg, var(--navy-950), var(--navy-900) 65%, var(--navy-800));
+}
+
+.sd-cta__pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.13;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 82px 82px;
+  mask-image: linear-gradient(to right, black, transparent 85%);
+}
+
+.sd-cta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.sd-cta .dante-eyebrow {
+  justify-content: center;
+}
+
+.sd-cta h2 {
+  max-width: 820px;
+  margin-inline: auto;
+  font-size: clamp(42px, 5vw, 66px);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.sd-cta__inner > p {
+  max-width: 640px;
+  margin: 25px auto 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.sd-cta__actions {
+  margin-top: 37px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 13px;
+}
+
+@media (max-width: 900px) {
+  .sd-need__grid,
+  .sd-faq__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-band__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .sd-band__grid article {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 720px) {
+  .sd-hero {
+    padding: 150px 0 78px;
+  }
+
+  .sd-hero h1 {
+    font-size: clamp(34px, 10vw, 50px);
+  }
+
+  .sd-hero__inner > p {
+    font-size: 15px;
+  }
+
+  .sd-need,
+  .sd-process,
+  .sd-costs {
+    padding-block: 72px;
+  }
+
+  .sd-process__steps li {
+    gap: 16px;
+  }
+
+  .sd-faq__list details p {
+    padding-left: 24px;
+  }
+
+  .sd-cta__actions {
+    display: grid;
+  }
+
+  .sd-cta__actions .dante-button {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-service-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

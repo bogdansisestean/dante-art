@@ -89,6 +89,14 @@
   text-wrap: balance;
 }
 
+.about-hero h1 em {
+  font-style: inherit;
+  background: linear-gradient(90deg, var(--gold-600), var(--gold-300));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .about-hero__content > p {
   max-width: 650px;
   margin-top: 28px;

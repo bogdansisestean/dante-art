@@ -163,7 +163,6 @@
 
 .team-profile--reverse .team-profile__media {
   order: 2;
-  border-radius: 28px 28px 220px 220px;
 }
 
 .team-profile--reverse .team-profile__content {
@@ -313,7 +312,8 @@
 }
 
 @media (max-width: 980px) {
-  .team-profile__grid {
+  .team-profile__grid,
+  .team-profile--reverse .team-profile__grid {
     grid-template-columns: 1fr;
   }
 
@@ -324,10 +324,6 @@
 
   .team-profile__media {
     width: min(100%, 620px);
-  }
-
-  .team-profile--reverse .team-profile__media {
-    border-radius: 220px 220px 28px 28px;
   }
 }
 
