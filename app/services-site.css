@@ -325,6 +325,14 @@
     grid-template-columns: 1fr;
   }
 
+  .service-tile h3 {
+    font-size: 26px;
+  }
+
+  .service-tile__price {
+    font-size: 16px;
+  }
+
   .services-cta__actions {
     display: grid;
   }

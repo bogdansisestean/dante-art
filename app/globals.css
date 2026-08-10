@@ -10,6 +10,9 @@
   --gold-400: #dcae4d;
   --gold-500: #bd8325;
   --gold-600: #9b6418;
+  /* Sampled from the Dantè Art logo gradient */
+  --logo-gold: #cc9951;
+  --logo-gold-deep: #976830;
   --cream: #fbf8f1;
   --paper: #fffefa;
   --muted: #697086;
@@ -302,10 +305,7 @@ svg {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid rgba(204, 153, 81, 0.18);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.97);
-  box-shadow: 0 14px 38px rgba(5, 11, 33, 0.12);
 }
 
 .brand-logo svg {

@@ -342,7 +342,7 @@
 
 .prices-table-wrap thead th {
   color: var(--gold-300);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -502,7 +502,7 @@
 
 .prices-faq summary > span {
   color: var(--gold-600);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .prices-faq summary strong {
@@ -748,7 +748,7 @@
   .prices-table-wrap th,
   .prices-table-wrap td {
     padding: 14px 13px;
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .prices-table-wrap th:last-child,

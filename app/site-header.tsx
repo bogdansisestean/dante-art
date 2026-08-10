@@ -113,7 +113,7 @@ export default function SiteHeader({
 
   return (
     <>
-      <div className="dante-topbar">
+      {/* <div className="dante-topbar">
         <div className="dante-shell dante-topbar__inner">
           <span><HeaderIcon name="map" />{clinic.streetAddress ?? clinic.city}</span>
           {publishedPhone && (
@@ -125,7 +125,7 @@ export default function SiteHeader({
             Luni–Vineri: {clinic.weekdayHours ?? "program în curs de confirmare"}
           </span>
         </div>
-      </div>
+      </div> */}
 
       <header className={`dante-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="dante-shell dante-nav">
