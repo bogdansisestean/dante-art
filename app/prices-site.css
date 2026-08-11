@@ -756,10 +756,6 @@
     width: 100px;
   }
 
-  .prices-table-wrap tbody td {
-    font-size: 15px;
-  }
-
   .price-category__links {
     align-items: flex-start;
     flex-direction: column;

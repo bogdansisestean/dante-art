@@ -651,7 +651,7 @@ export default function HomeSite() {
             <div className="dante-about__content" data-dante-reveal>
               <Eyebrow>Despre noi</Eyebrow>
               <h2>
-                Stomatologie făcută cu precizie și atenție la detalii.
+                Stomatologie făcută cu <span className="gold">precizie și atenție la detalii.</span>
               </h2>
               <p>
                 La Dantè Art ne dorim ca fiecare vizită la dentist să fie cât mai confortabilă.
@@ -677,7 +677,7 @@ export default function HomeSite() {
               <div>
                 <Eyebrow>Serviciile noastre</Eyebrow>
                 <h2>
-                  Servicii stomatologice complete în Baia Mare
+                <span className="gold">Servicii stomatologice</span> complete în Baia Mare
                 </h2>
               </div>
               <p>
@@ -829,7 +829,7 @@ export default function HomeSite() {
               <div>
                 <Eyebrow light>Echipa</Eyebrow>
                 <h2>
-                  Oamenii din spatele fiecărui zâmbet.
+                  <span className="gold">Echipa</span> din spatele fiecărui zâmbet.
                 </h2>
               </div>
               <p>
@@ -936,7 +936,7 @@ export default function HomeSite() {
           <div className="dante-shell">
             <div className="dante-contact__head" data-dante-reveal>
               <Eyebrow light>Programare</Eyebrow>
-              <h2>Programează-ți consultația la Dantè Art</h2>
+              <h2><span className="gold">Programează-ți consultația</span> la Dantè Art</h2>
               <p>
                 Completează formularul și te sunăm în timpul programului. Sau, dacă preferi,
                 sună-ne direct ori scrie-ne pe WhatsApp după publicarea datelor de contact.

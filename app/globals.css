@@ -2665,8 +2665,6 @@ svg {
   height: 105px;
   display: inline-flex;
   border-radius: 17px;
-  background: white;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.26);
 }
 
 .footer__top p {
@@ -3200,4 +3198,9 @@ svg {
     opacity: 1;
     transform: none;
   }
+}
+
+.gold {
+  color: var(--gold-500);
+  font-style: normal;
 }
