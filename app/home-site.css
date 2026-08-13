@@ -325,11 +325,11 @@
   position: absolute;
   top: 100%;
   left: 50%;
-  min-width: 244px;
-  padding: 9px;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-items: start;
+  gap: 6px 22px;
   border: 1px solid rgba(9, 18, 47, 0.09);
   border-radius: 18px;
   background: rgba(255, 254, 250, 0.98);
@@ -376,6 +376,27 @@
 .dante-nav__dropdown a.is-current {
   color: var(--gold-600);
   background: rgba(189, 131, 37, 0.08);
+}
+
+.dante-nav__dropdown-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.dante-nav__dropdown-label {
+  padding: 4px 15px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  white-space: nowrap;
+}
+
+.dante-header .dante-nav__dropdown a,
+.dante-header.is-scrolled .dante-nav__dropdown a {
+  white-space: nowrap;
 }
 
 .dante-nav__actions {
@@ -469,6 +490,7 @@
   position: fixed;
   z-index: 880;
   inset: 34px 0 0;
+  overflow-x: hidden;
   overflow-y: auto;
   color: white;
   background:
@@ -555,11 +577,60 @@
   letter-spacing: 0.1em;
 }
 
+.dante-mobile-menu__toggle {
+  width: 100%;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: none;
+  color: inherit;
+  font-family: var(--serif);
+  font-size: clamp(29px, 6vw, 47px);
+  line-height: 1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dante-mobile-menu__index {
+  color: var(--gold-400);
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.dante-mobile-menu__chevron {
+  margin-left: auto;
+  color: var(--gold-400);
+  font-size: 24px;
+  line-height: 1;
+  transition: transform 0.3s var(--ease);
+}
+
+.dante-mobile-menu__toggle.is-open .dante-mobile-menu__chevron {
+  transform: rotate(180deg);
+}
+
 .dante-mobile-menu__sub {
   display: flex;
   flex-direction: column;
   padding: 8px 0 14px 42px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dante-mobile-menu__sub-label {
+  padding: 14px 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-300);
+}
+
+.dante-mobile-menu__sub-label:first-child {
+  padding-top: 4px;
 }
 
 .dante-mobile-menu__sub a {
@@ -2384,6 +2455,11 @@ a.dante-contact-method:hover > svg {
   line-height: 1.75;
 }
 
+.dante-footer__brand img {
+  width: clamp(140px, 20vw, 200px);
+  height: auto;
+}
+
 .dante-social-placeholder {
   margin-top: 23px;
   display: flex;
@@ -3210,6 +3286,19 @@ a.dante-contact-method:hover > svg {
   .dante-back-to-top {
     right: 15px;
     bottom: 80px;
+  }
+
+  .brand-logo--compact {
+    width: 130px;
+    height: 42px;
+  }
+
+  .dante-footer__brand img {
+    width: 140px;
+  }
+
+  .dante-footer__anpc img {
+    width: 160px;
   }
 }
 

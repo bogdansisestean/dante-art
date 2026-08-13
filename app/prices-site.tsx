@@ -63,6 +63,7 @@ const categories: PriceCategory[] = [
   {
     id: "odontoterapie",
     label: "Odontoterapie",
+    links: [{ label: "Vezi detalii despre tratarea cariilor", href: "/servicii/tratarea-cariilor-baia-mare" }],
     title: "Odontoterapie — tratarea cariilor",
     intro:
       "Obturația (plomba) oprește evoluția cariei și reface forma naturală a dintelui. Prețul depinde de numărul de suprafețe afectate: cu cât descoperim caria mai devreme, cu atât tratamentul este mai simplu, mai rapid și mai accesibil.",
@@ -86,6 +87,7 @@ const categories: PriceCategory[] = [
   {
     id: "endodontie",
     label: "Endodonție",
+    links: [{ label: "Vezi detalii despre endodonție", href: "/servicii/tratament-de-canal-baia-mare" }],
     title: "Endodonție — tratament de canal",
     intro:
       "Tratamentul de canal salvează dintele atunci când caria a ajuns la nerv sau când există o infecție la nivelul rădăcinii. Prețul depinde de numărul de canale ale dintelui: incisivii și caninii au de obicei un canal, iar molarii trei sau patru. Retratamentul se aplică dinților tratați anterior, la care infecția a reapărut.",
@@ -106,6 +108,7 @@ const categories: PriceCategory[] = [
   {
     id: "parodontologie",
     label: "Parodontologie",
+    links: [{ label: "Vezi detalii despre parodontologie", href: "/servicii/parodontologie-baia-mare" }],
     title: "Parodontologie",
     intro:
       "Sângerarea gingiilor, retracția gingivală și mobilitatea dentară sunt semne de boală parodontală. Tratamentul începe cu o consultație de specialitate și o fișă parodontală, apoi continuă cu detartraj profund, chiuretaj și, acolo unde este necesar, decontaminare cu laser.",
@@ -125,6 +128,7 @@ const categories: PriceCategory[] = [
   {
     id: "pedodontie",
     label: "Pedodonție",
+    links: [{ label: "Vezi detalii despre pedodonție", href: "/servicii/pedodontie-baia-mare" }],
     title: "Pedodonție — stomatologie pentru copii",
     intro: (
       <>
@@ -150,6 +154,7 @@ const categories: PriceCategory[] = [
   {
     id: "extractii",
     label: "Extracții",
+    links: [{ label: "Vezi detalii despre extracții și chirurgie orală", href: "/servicii/extractii-dentare-baia-mare" }],
     title: "Extracții și chirurgie dento-alveolară",
     intro: (
       <>
@@ -174,6 +179,10 @@ const categories: PriceCategory[] = [
   {
     id: "implantologie",
     label: "Implantologie",
+    links: [
+      { label: "Vezi detalii despre implantul dentar", href: "/servicii/implant-dentar-baia-mare" },
+      { label: "Vezi detalii despre dantura fixă pe implanturi (All-on-4 / All-on-6)", href: "/servicii/dantura-fixa-pe-implanturi-baia-mare" },
+    ],
     title: "Implantologie",
     intro:
       "Implantul dentar înlocuiește rădăcina dintelui pierdut și susține coroana definitivă. Lucrăm cu sisteme de implanturi cu documentație clinică pe termen lung, iar planificarea se face digital, pe baza investigației de diagnostic.",
@@ -211,6 +220,7 @@ const categories: PriceCategory[] = [
   {
     id: "protetica",
     label: "Protetică",
+    links: [{ label: "Vezi detalii despre protetica dentară", href: "/servicii/coroane-si-proteze-dentare-baia-mare" }],
     title: "Protetică dentară",
     intro:
       "Lucrările protetice refac forma, funcția și aspectul dinților afectați sau lipsă. Coroanele din zirconiu monolit oferă cea mai bună combinație de rezistență și aspect natural, iar fațetele dentare corectează forma și culoarea dinților frontali.",

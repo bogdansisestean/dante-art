@@ -76,16 +76,42 @@ export const anpc = {
   label: "ANPC – Soluționarea Alternativă a Litigiilor",
 };
 
-// Live /servicii/[slug] pages, surfaced in the header "Servicii" dropdown.
-// Only treatments with a published page belong here, so no link 404s. Order
-// mirrors the /servicii grid. Add a treatment once its page goes live.
-export const servicesMenu = [
-  { href: "/servicii/ortodontie-baia-mare", label: "Ortodonție" },
-  { href: "/servicii/fatete-dentare-baia-mare", label: "Fațete dentare" },
-  { href: "/servicii/albire-dentara-baia-mare", label: "Albire dentară" },
-  { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Coroane și proteze" },
-  { href: "/servicii/igienizare-dentara-baia-mare", label: "Igienizare și prevenție" },
-  { href: "/servicii/tratament-de-canal-baia-mare", label: "Tratament de canal" },
+// Live /servicii/[slug] pages, surfaced in the header "Servicii" dropdown,
+// grouped into three categories. Group titles are labels, not links. Every
+// treatment now has a published page, so none of these link to a 404.
+export type ServiceMenuGroup = {
+  group: string;
+  items: { href: string; label: string }[];
+};
+
+export const servicesMenu: ServiceMenuGroup[] = [
+  {
+    group: "Implantologie și protetică",
+    items: [
+      { href: "/servicii/implant-dentar-baia-mare", label: "Implant dentar" },
+      { href: "/servicii/dantura-fixa-pe-implanturi-baia-mare", label: "Dantură fixă pe implanturi" },
+      { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Protetică dentară" },
+    ],
+  },
+  {
+    group: "Estetică dentară",
+    items: [
+      { href: "/servicii/fatete-dentare-baia-mare", label: "Fațete dentare" },
+      { href: "/servicii/albire-dentara-baia-mare", label: "Albire dentară" },
+      { href: "/servicii/ortodontie-baia-mare", label: "Ortodonție" },
+    ],
+  },
+  {
+    group: "Tratamente și prevenție",
+    items: [
+      { href: "/servicii/igienizare-dentara-baia-mare", label: "Igienizare și prevenție" },
+      { href: "/servicii/tratament-de-canal-baia-mare", label: "Endodonție (tratament de canal)" },
+      { href: "/servicii/parodontologie-baia-mare", label: "Parodontologie" },
+      { href: "/servicii/pedodontie-baia-mare", label: "Pedodonție (copii)" },
+      { href: "/servicii/tratarea-cariilor-baia-mare", label: "Tratarea cariilor" },
+      { href: "/servicii/extractii-dentare-baia-mare", label: "Extracții și chirurgie orală" },
+    ],
+  },
 ];
 
 export const footerNavigation = [
@@ -97,15 +123,19 @@ export const footerNavigation = [
   { href: "/contact", label: "Contact" },
 ];
 
-// As each /servicii/[nume-tratament] page goes live, its footer link points to
-// the page. Treatments without a dedicated page yet (implant) link into the
-// matching /preturi section so they never lead to a 404.
+// Footer "Servicii" column. Every treatment now has a dedicated page, so all
+// links point to /servicii/[slug] — no /preturi fallbacks, no 404s.
 export const footerServices = [
-  { href: "/preturi#implantologie", label: "Implant dentar" },
+  { href: "/servicii/implant-dentar-baia-mare", label: "Implant dentar" },
+  { href: "/servicii/dantura-fixa-pe-implanturi-baia-mare", label: "Dantură fixă pe implanturi" },
+  { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Protetică dentară" },
   { href: "/servicii/ortodontie-baia-mare", label: "Ortodonție" },
   { href: "/servicii/fatete-dentare-baia-mare", label: "Fațete dentare" },
   { href: "/servicii/albire-dentara-baia-mare", label: "Albire dentară" },
-  { href: "/servicii/coroane-si-proteze-dentare-baia-mare", label: "Coroane și proteze" },
-  { href: "/servicii/tratament-de-canal-baia-mare", label: "Tratament de canal" },
+  { href: "/servicii/tratarea-cariilor-baia-mare", label: "Tratarea cariilor" },
+  { href: "/servicii/tratament-de-canal-baia-mare", label: "Endodonție" },
+  { href: "/servicii/parodontologie-baia-mare", label: "Parodontologie" },
+  { href: "/servicii/pedodontie-baia-mare", label: "Pedodonție" },
+  { href: "/servicii/extractii-dentare-baia-mare", label: "Extracții și chirurgie orală" },
   { href: "/servicii/igienizare-dentara-baia-mare", label: "Igienizare și prevenție" },
 ];

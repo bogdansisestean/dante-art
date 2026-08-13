@@ -78,7 +78,7 @@ const trustPoints: { icon: IconName; title: string; text: string }[] = [
   },
 ];
 
-type ServiceCard = { icon: IconName; title: string; text: string; price: string };
+type ServiceCard = { icon: IconName; title: string; text: string; price: string; href: string };
 
 const services: ServiceCard[] = [
   {
@@ -86,66 +86,84 @@ const services: ServiceCard[] = [
     title: "Implant dentar",
     text: "Înlocuiește rădăcina dintelui pierdut și oprește retragerea osului din zona respectivă. Poziția fiecărui implant este planificată digital, pe imaginea 3D obținută prin CBCT.",
     price: "de la 2.500 lei",
+    href: "/servicii/implant-dentar-baia-mare",
+  },
+  {
+    icon: "implant",
+    title: "Dantură fixă pe implanturi",
+    text: "Refacem toată arcada cu o lucrare fixă, sprijinită pe patru sau șase implanturi. All-on-4 și All-on-6.",
+    price: "de la 9.500 lei (fără implanturi)",
+    href: "/servicii/dantura-fixa-pe-implanturi-baia-mare",
   },
   {
     icon: "braces",
     title: "Ortodonție",
     text: "Aparat dentar pentru copii și adulți, metalic sau din safir. Corectăm nu doar alinierea dinților, ci și felul în care se închide mușcătura.",
     price: "de la 1.500 lei",
+    href: "/servicii/ortodontie-baia-mare",
   },
   {
     icon: "tooth",
     title: "Fațete dentare",
     text: "Corectează forma, culoarea și micile neregularități ale dinților din față, cu un rezultat gândit pentru trăsăturile tale.",
     price: "2.000 lei / bucată",
+    href: "/servicii/fatete-dentare-baia-mare",
   },
   {
     icon: "sparkles",
     title: "Albire dentară",
     text: "În cabinet, cu lampă profesională, într-o singură ședință, sau acasă, cu gutiere realizate după amprenta ta.",
     price: "de la 850 lei",
+    href: "/servicii/albire-dentara-baia-mare",
   },
   {
     icon: "crown",
-    title: "Coroane și proteze",
+    title: "Protetică dentară",
     text: "Refac forma și funcția dinților distruși sau lipsă. Coroanele din zirconiu monolit combină rezistența cu un aspect natural.",
     price: "de la 800 lei",
+    href: "/servicii/coroane-si-proteze-dentare-baia-mare",
   },
   {
     icon: "shield",
     title: "Igienizare și prevenție",
     text: "Detartraj, periaj profesional și Air Flow, la fiecare șase luni. Cea mai ieftină metodă de a evita tratamentele scumpe.",
     price: "de la 300 lei",
+    href: "/servicii/igienizare-dentara-baia-mare",
   },
   {
     icon: "cavity",
     title: "Tratarea cariilor",
     text: "Obturația oprește evoluția cariei și reface forma dintelui. Cu cât o descoperim mai devreme, cu atât tratamentul este mai simplu.",
     price: "de la 300 lei",
+    href: "/servicii/tratarea-cariilor-baia-mare",
   },
   {
     icon: "canal",
-    title: "Tratament de canal",
+    title: "Endodonție (tratament de canal)",
     text: "Salvează dintele atunci când caria a ajuns la nerv sau când infecția a atins rădăcina.",
     price: "de la 500 lei",
+    href: "/servicii/tratament-de-canal-baia-mare",
   },
   {
     icon: "drop",
     title: "Parodontologie",
     text: "Gingii care sângerează, se retrag sau dinți care au căpătat mobilitate. Tratăm cauza, nu doar simptomul.",
     price: "de la 200 lei",
+    href: "/servicii/parodontologie-baia-mare",
   },
   {
     icon: "smile",
-    title: "Stomatologie pentru copii",
+    title: "Pedodonție (stomatologie pentru copii)",
     text: "Sigilări, fluorizări și tratamente explicate pe înțelesul lor. Cu răbdare, ca vizita la dentist să nu devină o frică de adult.",
     price: "de la 100 lei",
+    href: "/servicii/pedodontie-baia-mare",
   },
   {
     icon: "eject",
     title: "Extracții și chirurgie orală",
     text: "Ultima soluție, atunci când dintele nu mai poate fi salvat. Se face sub anestezie, iar locul poate fi refăcut ulterior cu un implant.",
     price: "de la 220 lei",
+    href: "/servicii/extractii-dentare-baia-mare",
   },
 ];
 
@@ -233,12 +251,13 @@ export default function ServicesSite() {
           <div className="dante-shell">
             <div className="services-grid">
               {services.map((service) => (
-                <article className="service-tile" key={service.title} data-services-reveal>
+                <a className="service-tile" href={service.href} key={service.title} data-services-reveal>
                   <span className="service-tile__icon"><Icon name={service.icon} /></span>
                   <h3>{service.title}</h3>
                   <p>{service.text}</p>
                   <span className="service-tile__price">{service.price}</span>
-                </article>
+                  <span className="service-tile__arrow" aria-hidden="true"><Icon name="arrow" /></span>
+                </a>
               ))}
             </div>
           </div>

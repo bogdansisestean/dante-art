@@ -91,7 +91,7 @@ export default function SiteFooter({
         <div className="dante-footer__grid">
           <div className="dante-footer__brand">
             <a href="/" aria-label="Dantè Art — Acasă">
-              <img src="/dante_art_logo.ai (1).svg" alt="Dantè Art — Clinică stomatologică" width={200} />
+              <img src="/dante-art-logo-full.svg" alt="Dantè Art — Clinică stomatologică" width={200} />
             </a>
             <p>
               Oferim tratamente stomatologice moderne, adaptate nevoilor fiecărui pacient.

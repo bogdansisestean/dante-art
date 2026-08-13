@@ -63,16 +63,23 @@ const services: {
     text: "Înlocuim dinții lipsă cu implanturi stabile și naturale, planificate digital.",
   },
   {
+    href: "/servicii/dantura-fixa-pe-implanturi-baia-mare",
+    icon: "implant",
+    number: "02",
+    title: "Dantură fixă pe implanturi",
+    text: "Refacem toată arcada cu o lucrare fixă, sprijinită pe patru sau șase implanturi. All-on-4 și All-on-6.",
+  },
+  {
     href: "/servicii/fatete-dentare-baia-mare",
     icon: "sparkles",
-    number: "02",
+    number: "03",
     title: "Fațete dentare",
     text: "Corectăm forma și culoarea dinților pentru un zâmbet armonios, cu aspect natural.",
   },
   {
     href: "/servicii/albire-dentara-baia-mare",
     icon: "smile",
-    number: "03",
+    number: "04",
     title: "Albire dentară",
     text: "Albire profesională, sigură pentru smalț, cu rezultate vizibile de la prima ședință.",
   },
@@ -87,20 +94,27 @@ const services: {
     href: "/servicii/coroane-si-proteze-dentare-baia-mare",
     icon: "shield",
     number: "06",
-    title: "Coroane și proteze",
+    title: "Protetică dentară",
     text: "Lucrări protetice personalizate, pentru masticație confortabilă și aspect natural.",
   },
   {
     href: "/servicii/tratament-de-canal-baia-mare",
     icon: "tooth",
     number: "07",
-    title: "Tratament de canal",
+    title: "Endodonție (tratament de canal)",
     text: "Salvăm dinții afectați de carii profunde sau infecții, fără durere.",
+  },
+  {
+    href: "/servicii/pedodontie-baia-mare",
+    icon: "smile",
+    number: "08",
+    title: "Pedodonție",
+    text: "Sigilări, fluorizări și tratamente explicate pe înțelesul lor. Cu răbdare, ca vizita la dentist să nu devină o frică de adult.",
   },
   {
     href: "/servicii/igienizare-dentara-baia-mare",
     icon: "sparkles",
-    number: "08",
+    number: "09",
     title: "Igienizare și prevenție",
     text: "Detartraj, periaj profesional și controale regulate. Cel mai ieftin tratament e prevenția.",
   },
@@ -360,6 +374,10 @@ function RequestForm({ compact = false }: { compact?: boolean }) {
             <option value="">Alege un serviciu</option>
             <option>Consultație</option>
             <option>Implant dentar</option>
+            <option>Dantură fixă pe implanturi (All-on-4 / All-on-6)</option>
+            <option>Stomatologie pentru copii</option>
+            <option>Protetică dentară (coroane și proteze)</option>
+            <option>Parodontologie</option>
             <option>Fațete dentare</option>
             <option>Albire</option>
             <option>Ortodonție</option>
@@ -939,7 +957,7 @@ export default function HomeSite() {
               <h2><span className="gold">Programează-ți consultația</span> la Dantè Art</h2>
               <p>
                 Completează formularul și te sunăm în timpul programului. Sau, dacă preferi,
-                sună-ne direct ori scrie-ne pe WhatsApp după publicarea datelor de contact.
+                sună-ne direct ori scrie-ne pe WhatsApp.
               </p>
             </div>
             <div className="dante-contact__grid">

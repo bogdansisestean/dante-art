@@ -1,0 +1,103 @@
+# ==========================================================================
+# Dantè Art — static export (.htaccess for cPanel / Apache)
+# Lives in /public so `next build` copies it into /out automatically.
+# Upload the CONTENTS of /out to your cPanel document root (public_html).
+# ==========================================================================
+
+# --- Default document served for a directory (Next.js trailingSlash export) -
+DirectoryIndex index.html
+
+# --- Force HTTPS ----------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # --- Canonical host: pick ONE and uncomment. Default keeps things as-is. -
+  # Force non-www:
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+  # Force www:
+  # RewriteCond %{HTTP_HOST} !^www\. [NC]
+  # RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# --- Custom error page ----------------------------------------------------
+ErrorDocument 404 /404.html
+
+# --- Compression ----------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml application/rss+xml
+  AddOutputFilterByType DEFLATE application/font-woff application/font-woff2
+  AddOutputFilterByType DEFLATE font/woff font/woff2 font/ttf
+</IfModule>
+
+# --- Correct MIME types (some shared hosts miss these) --------------------
+<IfModule mod_mime.c>
+  AddType image/svg+xml            .svg
+  AddType image/webp               .webp
+  AddType image/avif               .avif
+  AddType font/woff2               .woff2
+  AddType font/woff                .woff
+  AddType text/javascript          .js .mjs
+  AddType application/manifest+json .webmanifest
+</IfModule>
+
+# --- Caching --------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Content-hashed build assets — safe to cache forever.
+  <FilesMatch "\.(js|mjs|css|woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Media — long cache, not immutable (filenames are stable but editable).
+  ExpiresByType image/jpeg     "access plus 30 days"
+  ExpiresByType image/png      "access plus 30 days"
+  ExpiresByType image/webp     "access plus 30 days"
+  ExpiresByType image/avif     "access plus 30 days"
+  ExpiresByType image/svg+xml  "access plus 30 days"
+  ExpiresByType video/mp4      "access plus 30 days"
+
+  # HTML — always revalidate so content updates go live immediately.
+  ExpiresByType text/html      "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# --- The _next/static folder is always content-hashed -> immutable --------
+<IfModule mod_headers.c>
+  <FilesMatch "^.*$">
+    <If "%{REQUEST_URI} =~ m#^/_next/static/#">
+      Header set Cache-Control "public, max-age=31536000, immutable"
+    </If>
+  </FilesMatch>
+</IfModule>
+
+# --- Security headers ------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# --- Hardening ------------------------------------------------------------
+Options -Indexes
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+# Keep .well-known reachable (SSL / domain verification).
+<IfModule mod_rewrite.c>
+  RewriteRule ^\.well-known/ - [L]
+</IfModule>

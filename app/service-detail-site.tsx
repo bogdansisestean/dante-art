@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import SiteFooter from "./site-footer";
 import SiteHeader from "./site-header";
 import { clinic } from "./site-config";
@@ -56,31 +57,47 @@ export default function ServiceDetailSite({ service }: { service: ServiceContent
     };
   }, []);
 
+  const pricesHref = service.pricesHref ?? "/preturi";
+
   return (
     <div className="service-detail">
       <div className="dante-progress" style={{ width: `${progress}%` }} />
       <SiteHeader clinic={clinic} />
 
       <main>
-        <section className="sd-hero">
+        <section className={`sd-hero ${service.heroImage ? "sd-hero--media" : ""}`}>
           <div className="sd-hero__pattern" />
           <div className="sd-hero__glow" />
           <div className="dante-shell sd-hero__inner" data-service-reveal>
-            <Eyebrow light>{service.eyebrow}</Eyebrow>
-            <h1>{service.title}</h1>
-            <p>{service.intro}</p>
-            <nav className="sd-breadcrumbs" aria-label="Breadcrumb">
-              <a href="/">Acasă</a>
-              <span aria-hidden="true">›</span>
-              <a href="/servicii">Servicii</a>
-              <span aria-hidden="true">›</span>
-              <strong>{service.eyebrow}</strong>
-            </nav>
-            <div className="sd-hero__actions">
-              <a href="/contact" className="dante-button dante-button--gold dante-button--large">
-                Programează o consultație <Icon name="arrow" />
-              </a>
+            <div className="sd-hero__content">
+              <Eyebrow light>{service.eyebrow}</Eyebrow>
+              <h1>{service.title}</h1>
+              <p>{service.intro}</p>
+              <nav className="sd-breadcrumbs" aria-label="Breadcrumb">
+                <a href="/">Acasă</a>
+                <span aria-hidden="true">›</span>
+                <a href="/servicii">Servicii</a>
+                <span aria-hidden="true">›</span>
+                <strong>{service.breadcrumb ?? service.eyebrow}</strong>
+              </nav>
+              <div className="sd-hero__actions">
+                <a href="/contact" className="dante-button dante-button--gold dante-button--large">
+                  Programează o consultație <Icon name="arrow" />
+                </a>
+              </div>
             </div>
+            {service.heroImage && (
+              <div className="sd-hero__media">
+                <Image
+                  src={service.heroImage.src}
+                  alt={service.heroImage.alt}
+                  fill
+                  sizes="(max-width: 900px) 90vw, 44vw"
+                  priority
+                />
+                <div className="sd-hero__media-wash" />
+              </div>
+            )}
           </div>
         </section>
 
@@ -100,7 +117,7 @@ export default function ServiceDetailSite({ service }: { service: ServiceContent
             <div className="sd-need__intro" data-service-reveal>
               <Eyebrow>Când ai nevoie</Eyebrow>
               <h2>{service.need.heading}</h2>
-              <p>{service.need.paragraph}</p>
+              {service.need.paragraph && <p>{service.need.paragraph}</p>}
             </div>
             {service.need.points && (
               <ul className="sd-need__points" data-service-reveal>
@@ -115,11 +132,34 @@ export default function ServiceDetailSite({ service }: { service: ServiceContent
           </div>
         </section>
 
+        {service.variantBlock && (
+          <section className="sd-variants">
+            <div className="dante-shell">
+              <div className="sd-variants__head" data-service-reveal>
+                <Eyebrow>{service.variantBlock.eyebrow}</Eyebrow>
+                <h2>{service.variantBlock.heading}</h2>
+                <p>{service.variantBlock.intro}</p>
+              </div>
+              <div className="sd-variants__cards">
+                {service.variantBlock.cards.map((card) => (
+                  <article key={card.title} data-service-reveal>
+                    <h3>{card.title}</h3>
+                    <p>{card.text}</p>
+                  </article>
+                ))}
+              </div>
+              {service.variantBlock.footnote && (
+                <p className="sd-variants__note" data-service-reveal>{service.variantBlock.footnote}</p>
+              )}
+            </div>
+          </section>
+        )}
+
         <section className="sd-process">
           <div className="dante-shell">
             <div className="sd-process__head" data-service-reveal>
               <Eyebrow>Cum decurge</Eyebrow>
-              <h2>Pas cu pas, fără surprize</h2>
+              <h2>{service.processHeading ?? "Pas cu pas, fără surprize"}</h2>
             </div>
             <ol className="sd-process__steps">
               {service.process.map((step, index) => (
@@ -131,6 +171,22 @@ export default function ServiceDetailSite({ service }: { service: ServiceContent
             </ol>
           </div>
         </section>
+
+        {service.extraBlock && (
+          <section className="sd-extra">
+            <div className="dante-shell sd-extra__inner" data-service-reveal>
+              <Eyebrow>{service.extraBlock.eyebrow}</Eyebrow>
+              <h2>{service.extraBlock.heading}</h2>
+              <p>{service.extraBlock.paragraph}</p>
+              {service.extraBlock.link && (
+                <a href={service.extraBlock.link.href} className="dante-text-link">
+                  {service.extraBlock.link.label}
+                  <Icon name="arrow" />
+                </a>
+              )}
+            </div>
+          </section>
+        )}
 
         <section className="sd-costs">
           <div className="dante-shell">
@@ -179,20 +235,36 @@ export default function ServiceDetailSite({ service }: { service: ServiceContent
           </div>
         </section>
 
+        {service.relatedLinks && service.relatedLinks.length > 0 && (
+          <section className="sd-related" aria-label="Vezi și">
+            <div className="dante-shell sd-related__inner" data-service-reveal>
+              <span className="sd-related__label">Vezi și</span>
+              <div className="sd-related__links">
+                {service.relatedLinks.map((link) => (
+                  <a href={link.href} key={link.href} className="dante-text-link">
+                    {link.label}
+                    <Icon name="arrow" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="sd-cta">
           <div className="sd-cta__pattern" />
           <div className="dante-shell sd-cta__inner" data-service-reveal>
             <Eyebrow light>Următorul pas</Eyebrow>
-            <h2>Vino la o consultație</h2>
+            <h2>{service.cta?.heading ?? "Vino la o consultație"}</h2>
             <p>
-              Ne poți suna, ne poți scrie pe WhatsApp sau poți completa formularul de contact.
-              Stabilim împreună o oră care ți se potrivește.
+              {service.cta?.paragraph ??
+                "Ne poți suna, ne poți scrie pe WhatsApp sau poți completa formularul de contact. Stabilim împreună o oră care ți se potrivește."}
             </p>
             <div className="sd-cta__actions">
               <a href="/contact" className="dante-button dante-button--gold dante-button--large">
                 Programează o consultație <Icon name="arrow" />
               </a>
-              <a href="/preturi" className="dante-button dante-button--ghost dante-button--large">
+              <a href={pricesHref} className="dante-button dante-button--ghost dante-button--large">
                 Vezi prețurile
               </a>
             </div>

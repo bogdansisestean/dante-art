@@ -243,10 +243,39 @@
 }
 
 .service-tile {
+  position: relative;
+  display: block;
   padding: 30px 28px;
   border: 1px solid var(--line);
   border-radius: 20px;
   background: var(--paper);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.service-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(189, 131, 37, 0.4);
+  box-shadow: var(--shadow-soft);
+}
+
+.service-tile__arrow {
+  position: absolute;
+  top: 30px;
+  right: 28px;
+  display: inline-flex;
+  color: var(--gold-600);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.service-tile__arrow svg {
+  width: 20px;
+}
+
+.service-tile:hover .service-tile__arrow {
+  opacity: 1;
+  transform: none;
 }
 
 .service-tile__icon {

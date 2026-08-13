@@ -60,6 +60,7 @@ export default function SiteHeader({
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [appointmentOpen, setAppointmentOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const publishedPhone = Boolean(clinic.phoneDisplay && clinic.phoneHref);
@@ -74,7 +75,12 @@ export default function SiteHeader({
   useEffect(() => {
     setMenuOpen(false);
     setServicesOpen(false);
+    setMobileServicesOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!menuOpen) setMobileServicesOpen(false);
+  }, [menuOpen]);
 
   useEffect(() => {
     if (!servicesOpen) return;
@@ -157,14 +163,19 @@ export default function SiteHeader({
                     <span aria-hidden="true">⌄</span>
                   </a>
                   <div className="dante-nav__dropdown">
-                    {servicesMenu.map((service) => (
-                      <a
-                        href={service.href}
-                        key={service.href}
-                        className={pathname === service.href ? "is-current" : ""}
-                      >
-                        {service.label}
-                      </a>
+                    {servicesMenu.map((group) => (
+                      <div className="dante-nav__dropdown-group" key={group.group}>
+                        <span className="dante-nav__dropdown-label">{group.group}</span>
+                        {group.items.map((service) => (
+                          <a
+                            href={service.href}
+                            key={service.href}
+                            className={pathname === service.href ? "is-current" : ""}
+                          >
+                            {service.label}
+                          </a>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -211,23 +222,42 @@ export default function SiteHeader({
             Programează-te
             <HeaderIcon name="arrow" />
           </button>
-          {navigation.map((item, index) => (
-            <Fragment key={item.href}>
-              <a href={item.href} onClick={() => setMenuOpen(false)}>
+          {navigation.map((item, index) =>
+            item.hasMenu ? (
+              <Fragment key={item.href}>
+                <button
+                  type="button"
+                  className={`dante-mobile-menu__toggle ${mobileServicesOpen ? "is-open" : ""}`}
+                  onClick={() => setMobileServicesOpen((value) => !value)}
+                  aria-expanded={mobileServicesOpen}
+                  aria-controls="mobile-services-submenu"
+                >
+                  <span className="dante-mobile-menu__index">{String(index + 1).padStart(2, "0")}</span>
+                  {item.label}
+                  <span className="dante-mobile-menu__chevron" aria-hidden="true">⌄</span>
+                </button>
+                {mobileServicesOpen && (
+                  <div className="dante-mobile-menu__sub" id="mobile-services-submenu">
+                    {servicesMenu.map((group) => (
+                      <Fragment key={group.group}>
+                        <span className="dante-mobile-menu__sub-label">{group.group}</span>
+                        {group.items.map((service) => (
+                          <a href={service.href} onClick={() => setMenuOpen(false)} key={service.href}>
+                            {service.label}
+                          </a>
+                        ))}
+                      </Fragment>
+                    ))}
+                  </div>
+                )}
+              </Fragment>
+            ) : (
+              <a href={item.href} onClick={() => setMenuOpen(false)} key={item.href}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 {item.label}
               </a>
-              {item.hasMenu && (
-                <div className="dante-mobile-menu__sub">
-                  {servicesMenu.map((service) => (
-                    <a href={service.href} onClick={() => setMenuOpen(false)} key={service.href}>
-                      {service.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </Fragment>
-          ))}
+            ),
+          )}
         </div>
       </div>
 

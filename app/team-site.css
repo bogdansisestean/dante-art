@@ -363,6 +363,19 @@
     font-size: 14px;
   }
 
+  .team-profile__tags {
+    margin-top: 22px;
+    padding-top: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .team-profile__tags li {
+    padding: 9px 15px;
+    font-size: 13px;
+  }
+
   .team-cta__actions {
     display: grid;
   }
