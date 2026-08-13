@@ -364,7 +364,7 @@
   transform: translateY(-2px);
 }
 
-.contact-map__trigger > span {
+.contact-map__trigger-icon {
   width: 60px;
   height: 60px;
   display: grid;
@@ -374,7 +374,7 @@
   background: linear-gradient(140deg, var(--gold-300), var(--gold-500));
 }
 
-.contact-map__trigger > span svg {
+.contact-map__trigger-icon svg {
   width: 26px;
 }
 
@@ -392,17 +392,33 @@
 .contact-map__trigger-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 4px;
-  color: var(--gold-600);
-  font-size: 14px;
+  gap: 10px;
+  margin-top: 8px;
+  padding: 0 20px;
+  min-height: 44px;
+  border: 1.5px solid rgba(9, 18, 47, 0.18);
+  border-radius: 999px;
+  color: var(--navy-900);
+  background: white;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.contact-map__trigger:hover .contact-map__trigger-cta {
+  border-color: rgba(189, 131, 37, 0.5);
+  background: rgba(189, 131, 37, 0.06);
 }
 
 .contact-map__trigger-cta svg {
   width: 16px;
+  transition: transform 0.3s var(--ease);
+}
+
+.contact-map__trigger:hover .contact-map__trigger-cta svg {
+  transform: translateX(4px);
 }
 
 .contact-map__embed {

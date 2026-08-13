@@ -64,6 +64,10 @@ export const services: ServiceContent[] = [
     title: "Aparat dentar în Baia Mare",
     intro:
       "Aparatul dentar aliniază dinții și corectează felul în care se închide mușcătura, la copii și la adulți deopotrivă. Dincolo de aspect, o mușcătură dezechilibrată uzează dinții neuniform și îngreunează igienizarea. Tratamentul este condus de medic specialist în ortodonție și ortopedie dento-facială.",
+    heroImage: {
+      src: "/servicii/ortodontie.webp",
+      alt: "Aparat dentar montat la clinica Dantè Art din Baia Mare",
+    },
     quickFacts: [
       "Preț — de la 1.500 lei aparatul, pentru ambele arcade",
       "Variante — metalic, din safir sau mobilizabil",
@@ -130,6 +134,10 @@ export const services: ServiceContent[] = [
     title: "Igienizare dentară în Baia Mare",
     intro:
       "Detartrajul și periajul profesional îndepărtează tartrul și placa bacteriană pe care periajul de acasă nu le mai poate curăța, iar procedura Air Flow elimină petele lăsate de cafea, ceai sau fumat. O ședință la fiecare șase luni previne cariile și boala parodontală, adică exact tratamentele scumpe.",
+    heroImage: {
+      src: "/servicii/igienizare.webp",
+      alt: "Igienizare dentară profesională la clinica Dantè Art din Baia Mare",
+    },
     quickFacts: [
       "Preț — de la 300 lei",
       "Durată — în general sub o oră",
@@ -193,6 +201,10 @@ export const services: ServiceContent[] = [
     title: "Albire dentară în Baia Mare",
     intro:
       "Albirea profesională îndepărtează petele acumulate în timp și deschide nuanța dinților. Se poate face în cabinet, cu lampă, într-o singură ședință, sau acasă, cu gutiere realizate special după amprenta ta. Înainte de albire recomandăm o ședință de igienizare, pentru ca substanța să acționeze uniform pe fiecare dinte.",
+    heroImage: {
+      src: "/servicii/albire.webp",
+      alt: "Albire dentară profesională la clinica Dantè Art din Baia Mare",
+    },
     quickFacts: [
       "Preț — 850 lei acasă, 1.000 lei în cabinet",
       "În cabinet — o singură ședință",
@@ -247,6 +259,10 @@ export const services: ServiceContent[] = [
     title: "Fațete dentare în Baia Mare",
     intro:
       "Fațetele sunt lamele fine care se aplică pe suprafața dinților din față și le corectează forma, culoarea și micile neregularități. Sunt soluția pentru situațiile în care albirea nu este suficientă, iar rezultatul se proiectează dinainte, pornind de la trăsăturile tale.",
+    heroImage: {
+      src: "/servicii/fatete.webp",
+      alt: "Fațete dentare la clinica Dantè Art din Baia Mare",
+    },
     quickFacts: [
       "Preț — 2.000 lei per fațetă",
       "Se lucrează pe un grup de dinți, pentru un rezultat unitar",
@@ -383,6 +399,10 @@ export const services: ServiceContent[] = [
     title: "Tratament de canal în Baia Mare",
     intro:
       "Tratamentul de canal salvează dintele atunci când caria a ajuns la nerv sau când o infecție s-a instalat la nivelul rădăcinii. Canalele sunt curățate, dezinfectate și sigilate, iar dintele rămâne pe arcadă, în locul unei extracții urmate de implant.",
+    heroImage: {
+      src: "/servicii/endodontie.webp",
+      alt: "Tratament de canal la clinica Dantè Art din Baia Mare",
+    },
     quickFacts: [
       "Preț — de la 500 lei",
       "Costul depinde de numărul de canale ale dintelui",

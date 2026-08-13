@@ -409,7 +409,7 @@ export default function ContactSite() {
                   className="contact-map__trigger"
                   onClick={() => setMapLoaded(true)}
                 >
-                  <span>
+                  <span className="contact-map__trigger-icon">
                     <Icon name="map" />
                   </span>
                   <h3>{clinic.streetAddress ?? "Locația clinicii"}</h3>
